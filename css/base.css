@@ -1,0 +1,38 @@
+/* ==========================================================================
+   1. DESIGN TOKENS & RESET
+   ========================================================================== */
+:root {
+    --primary: #ff6b6b;
+    --primary-dark: #ee5253;
+    --bg: #f6f6f6;
+    --card-bg: #ffffff;
+    --text-main: #2d3436;
+    --text-muted: #636e72;
+    --border: #edf2f7;
+    --shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+    --radius: 16px;
+    --transition: 0.3s ease;
+}
+
+.dark-mode {
+    --bg: #1a1a1a;
+    --card-bg: #2d2d2d;
+    --text-main: #f5f6fa;
+    --text-muted: #a2a2a2;
+    --border: #3d3d3d;
+    --shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: var(--bg);
+    color: var(--text-main);
+    font-family: 'Segoe UI', Roboto, sans-serif;
+    transition: var(--transition);
+    line-height: 1.6;
+}

@@ -1,0 +1,43 @@
+/* --- SIMPLE EMPTY STATE --- */
+.empty-state {
+    grid-column: 1 / -1;
+    /* Spans full grid width */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 100px 20px;
+    text-align: center;
+}
+
+.empty-state h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    color: var(--text-main);
+}
+
+.empty-state p {
+    color: var(--text-muted);
+    margin-bottom: 30px;
+    font-size: 1.1rem;
+}
+
+/* Central CTA Button */
+.empty-state .browse-btn {
+    background: var(--primary);
+    color: white;
+    padding: 15px 40px;
+    border-radius: 50px;
+    /* Capsule shape */
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.1rem;
+    transition: var(--transition);
+    box-shadow: var(--shadow);
+}
+
+.empty-state .browse-btn:hover {
+    background: var(--primary-dark);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(255, 107, 107, 0.3);
+}
