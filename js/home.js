@@ -1,4 +1,7 @@
-function initHomePage() {
+import { recipes } from "./recipesData.js";
+import { createRecipeCard, toggleFavorite } from "./utils.js";
+
+export function initHomePage() {
     const recipeGrid = document.getElementById("recipeGrid");
     const searchInput = document.getElementById("searchInput");
     const categoryFilter = document.getElementById("categoryFilter");
@@ -19,11 +22,14 @@ function initHomePage() {
         });
 
         recipeGrid.innerHTML = filtered.map(recipe => createRecipeCard(recipe)).join('');
+
+        // Add event listeners to newly created buttons
+        filtered.forEach(recipe => {
+            document.getElementById(`fav-${recipe.id}`).addEventListener("click", () => toggleFavorite(recipe.id));
+        });
     };
 
     searchInput.addEventListener("input", window.filterAndRender);
     categoryFilter.addEventListener("change", window.filterAndRender);
     window.filterAndRender();
 }
-
-document.addEventListener("DOMContentLoaded", initHomePage);

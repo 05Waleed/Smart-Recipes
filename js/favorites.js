@@ -1,4 +1,7 @@
-function renderFavoritesPage() {
+import { recipes } from "./recipesData.js";
+import { favorites, createRecipeCard, toggleFavorite } from "./utils.js";
+
+export function renderFavoritesPage() {
     const favGrid = document.getElementById("favoritesGrid");
     const heroHeading = document.querySelector(".hero");
 
@@ -17,7 +20,11 @@ function renderFavoritesPage() {
     } else {
         if (heroHeading) heroHeading.style.display = "block";
         favGrid.innerHTML = favRecipes.map(recipe => createRecipeCard(recipe)).join('');
+
+        // Bind listeners
+        favRecipes.forEach(recipe => {
+            document.getElementById(`fav-${recipe.id}`).addEventListener("click", () => toggleFavorite(recipe.id));
+        });
     }
 }
-
-document.addEventListener("DOMContentLoaded", renderFavoritesPage);
+window.renderFavoritesPage = renderFavoritesPage; // Make global for utils.js

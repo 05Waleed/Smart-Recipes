@@ -1,4 +1,6 @@
-function initDetailPage() {
+import { recipes } from "./recipesData.js";
+
+export function initDetailPage() {
     const container = document.getElementById("recipeDetail");
     if (!container) return;
 
@@ -55,5 +57,3 @@ function initDetailPage() {
     document.getElementById("servingsInput")?.addEventListener("input", e => updateIngredients(e.target.value));
     updateIngredients(baseServings);
 }
-
-document.addEventListener("DOMContentLoaded", initDetailPage);
