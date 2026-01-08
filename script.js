@@ -1,38 +1,36 @@
-// --- 1. STATE MANAGEMENT ---
-// Shared state across all pages
+/* ==========================================================================
+   1. SHARED STATE & DATA MANAGEMENT
+   ========================================================================== */
 let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
 
 /**
- * Global function to add/remove favorites
- * @param {number} id - The ID of the recipe
+ * Global function to handle recipe bookmarking
  */
 function toggleFavorite(id) {
     const index = favorites.indexOf(id);
     if (index > -1) {
-        favorites.splice(index, 1); // Remove if exists
+        favorites.splice(index, 1);
     } else {
-        favorites.push(id); // Add if not
+        favorites.push(id);
     }
 
     localStorage.setItem("favorites", JSON.stringify(favorites));
 
-    // Smart Refresh: Updates UI based on which page the user is on
+    // Smart UI Refresh
     if (document.getElementById("favoritesGrid")) {
         renderFavoritesPage();
     } else if (document.getElementById("recipeGrid")) {
-        // Refresh index page filters to update heart icons
-        const searchInput = document.getElementById("searchInput");
-        const categoryFilter = document.getElementById("categoryFilter");
-        filterAndRender(searchInput?.value || "", categoryFilter?.value || "All");
+        window.filterAndRender();
     }
 }
 
-// --- 2. THEME ENGINE ---
+/* ==========================================================================
+   2. UI ENGINES (Theme & Components)
+   ========================================================================== */
 function initTheme() {
     const themeBtn = document.getElementById("themeToggle");
     const isDark = localStorage.getItem("theme") === "dark";
 
-    // Apply saved theme on load
     if (isDark) {
         document.body.classList.add("dark-mode");
         if (themeBtn) themeBtn.textContent = "☀️";
@@ -45,9 +43,8 @@ function initTheme() {
     });
 }
 
-// --- 3. REUSABLE UI COMPONENTS ---
 /**
- * Creates a standard recipe card string
+ * Reusable Card Component for Grid Views
  */
 function createRecipeCard(recipe) {
     const isFav = favorites.includes(recipe.id);
@@ -68,9 +65,9 @@ function createRecipeCard(recipe) {
     `;
 }
 
-// --- 4. PAGE-SPECIFIC LOGIC ---
-
-// A. HOMEPAGE (index.html)
+/* ==========================================================================
+   3. PAGE LOGIC: HOMEPAGE (index.html)
+   ========================================================================== */
 function initHomePage() {
     const recipeGrid = document.getElementById("recipeGrid");
     const searchInput = document.getElementById("searchInput");
@@ -78,11 +75,10 @@ function initHomePage() {
 
     if (!recipeGrid) return;
 
-    // Setup Category Dropdown
+    // Populate Category Dropdown
     const categories = ["All", ...new Set(recipes.map(r => r.category))];
     categoryFilter.innerHTML = categories.map(cat => `<option value="${cat}">${cat}</option>`).join('');
 
-    // Filtering Logic
     window.filterAndRender = () => {
         const term = searchInput.value.toLowerCase();
         const cat = categoryFilter.value;
@@ -96,15 +92,14 @@ function initHomePage() {
         recipeGrid.innerHTML = filtered.map(recipe => createRecipeCard(recipe)).join('');
     };
 
-    // Event Listeners
     searchInput.addEventListener("input", filterAndRender);
     categoryFilter.addEventListener("change", filterAndRender);
-
-    // Initial Render
     filterAndRender();
 }
 
-// B. DETAIL PAGE (detailRecipe.html)
+/* ==========================================================================
+   4. PAGE LOGIC: DETAIL PAGE (detailRecipe.html)
+   ========================================================================== */
 function initDetailPage() {
     const container = document.getElementById("recipeDetail");
     if (!container) return;
@@ -114,43 +109,88 @@ function initDetailPage() {
     const recipe = recipes.find(r => r.id === id);
 
     if (!recipe) {
-        container.innerHTML = `<h2>Recipe not found</h2><a href="index.html">Return Home</a>`;
+        container.innerHTML = `<div class="empty-state"><h2>Recipe not found</h2><a href="index.html" class="browse-btn">Return Home</a></div>`;
         return;
     }
 
+    const baseServings = 2;
+
+    // Render Template with New Stats Bar
     container.innerHTML = `
         <div class="detail-header">
             <span class="category-tag">${recipe.category}</span>
             <h2>${recipe.name}</h2>
             <p>${recipe.description}</p>
+            
+            <div class="recipe-stats">
+                <div class="stat-item">
+                    <span class="stat-label">Time</span>
+                    <span class="stat-value">⏱️ ${recipe.prepTime}</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Difficulty</span>
+                    <span class="stat-value">📊 ${recipe.difficulty}</span>
+                </div>
+            </div>
         </div>
+        
         <div class="images-grid">
             ${recipe.images.map(img => `<img src="${img}" class="detail-img" alt="${recipe.name}">`).join('')}
         </div>
+
         <div class="detail-content">
             <aside class="ingredients">
                 <h3>Ingredients</h3>
-                <ul>
-                    ${recipe.ingredients.map(ing => `<li><strong>${ing.base}</strong> ${ing.name}</li>`).join('')}
-                </ul>
+                <div class="servings-control">
+                    <label for="servingsInput">Servings:</label>
+                    <input type="number" id="servingsInput" value="${baseServings}" min="1" max="50">
+                </div>
+                <ul id="ingredientsList"></ul>
             </aside>
+
             <section class="instructions">
                 <h3>Preparation Steps</h3>
-                <ol>${recipe.instructions.map(step => `<li>${step}</li>`).join('')}</ol>
-                <div class="chef-tip"><strong>Chef's Pro-Tip:</strong> ${recipe.tips}</div>
+                <ol>
+                    ${recipe.instructions.map(step => `<li>${step}</li>`).join('')}
+                </ol>
+                <div class="chef-tip">
+                    <strong>Chef's Pro-Tip:</strong> ${recipe.tips}
+                </div>
             </section>
         </div>
     `;
+
+    const updateIngredients = (newServings) => {
+        const list = document.getElementById("ingredientsList");
+        list.innerHTML = recipe.ingredients.map(ing => {
+            const calculatedAmount = (ing.base * newServings) / baseServings;
+            const displayAmount = parseFloat(calculatedAmount.toFixed(2));
+            return `<li><strong>${displayAmount}</strong> ${ing.name}</li>`;
+        }).join('');
+    };
+
+    const servingsInput = document.getElementById("servingsInput");
+    servingsInput.addEventListener("input", (e) => {
+        const currentVal = parseInt(e.target.value);
+        if (currentVal > 0) updateIngredients(currentVal);
+    });
+
+    updateIngredients(baseServings);
 }
 
-// C. FAVORITES PAGE (favorites.html)
+/* ==========================================================================
+   5. PAGE LOGIC: FAVORITES (favorites.html)
+   ========================================================================== */
 function renderFavoritesPage() {
     const favGrid = document.getElementById("favoritesGrid");
+    const heroHeading = document.querySelector(".hero");
+
     if (!favGrid) return;
 
     const favRecipes = recipes.filter(r => favorites.includes(r.id));
 
     if (favRecipes.length === 0) {
+        if (heroHeading) heroHeading.style.display = "none";
         favGrid.innerHTML = `
             <div class="empty-state">
                 <h2>Your cookbook is empty</h2>
@@ -158,14 +198,17 @@ function renderFavoritesPage() {
                 <a href="index.html" class="browse-btn">Browse Recipes</a>
             </div>`;
     } else {
+        if (heroHeading) heroHeading.style.display = "block";
         favGrid.innerHTML = favRecipes.map(recipe => createRecipeCard(recipe)).join('');
     }
 }
 
-// --- 5. INITIALIZATION ---
+/* ==========================================================================
+   6. GLOBAL INITIALIZATION
+   ========================================================================== */
 document.addEventListener("DOMContentLoaded", () => {
-    initTheme();      // Runs on all pages
-    initHomePage();   // Runs if #recipeGrid exists
-    initDetailPage(); // Runs if #recipeDetail exists
-    renderFavoritesPage(); // Runs if #favoritesGrid exists
+    initTheme();
+    initHomePage();
+    initDetailPage();
+    renderFavoritesPage();
 });

@@ -3,6 +3,8 @@ const recipes = [
         id: 1,
         name: "Creamy Pasta",
         category: "Dinner",
+        prepTime: "Quick Meal",
+        difficulty: "Intermediate", 
         description: "Rich and creamy pasta with herbs.",
         images: [
             "https://dishingouthealth.com/wp-content/uploads/2022/09/CreamyTomatoPasta_Square.jpg",
@@ -30,6 +32,8 @@ const recipes = [
         id: 2,
         name: "Avocado Toast",
         category: "Breakfast",
+        prepTime: "Quick Meal",
+        difficulty: "Easy",
         description: "Simple and healthy breakfast.",
         images: [
             "https://alegumeaday.com/wp-content/uploads/2024/03/Bean-avocado-toast-3.jpg",
@@ -55,6 +59,8 @@ const recipes = [
         id: 3,
         name: "Classic Pancakes",
         category: "Breakfast",
+        prepTime: "Moderate",
+        difficulty: "Intermediate",
         description: "Fluffy pancakes for a perfect morning.",
         images: [
             "https://vikalinka.com/wp-content/uploads/2021/10/Pancakes-13-Edit.jpg",
@@ -81,6 +87,8 @@ const recipes = [
         id: 4,
         name: "Grilled Chicken",
         category: "Dinner",
+        prepTime: "Moderate",
+        difficulty: "Intermediate",
         description: "Juicy grilled chicken breast.",
         images: [
             "https://www.inspiredtaste.net/wp-content/uploads/2021/06/Grilled-Chicken-Recipe-5-1200.jpg",
@@ -106,6 +114,8 @@ const recipes = [
         id: 5,
         name: "Caesar Salad",
         category: "Lunch",
+        prepTime: "Quick Meal",
+        difficulty: "Easy",
         description: "Fresh salad with creamy dressing.",
         images: [
             "https://natashaskitchen.com/wp-content/uploads/2019/01/Caesar-Salad-Recipe-3.jpg",
@@ -131,6 +141,8 @@ const recipes = [
         id: 6,
         name: "Beef Burger",
         category: "Dinner",
+        prepTime: "Quick Meal",
+        difficulty: "Intermediate",
         description: "Juicy homemade beef burger.",
         images: [
             "https://www.certifiedirishangus.ie/wp-content/uploads/2019/11/TheUltimateBurgerwBacon_RecipePic.jpg",
@@ -156,6 +168,8 @@ const recipes = [
         id: 7,
         name: "Vegetable Stir Fry",
         category: "Vegetarian",
+        prepTime: "Quick Meal",
+        difficulty: "Easy",
         description: "Quick and colorful veggie stir fry.",
         images: [
             "https://cdn.loveandlemons.com/wp-content/uploads/2025/02/vegetable-stir-fry.jpg",
@@ -182,6 +196,8 @@ const recipes = [
         id: 8,
         name: "Margherita Pizza",
         category: "Vegetarian",
+        prepTime: "Moderate",
+        difficulty: "Advanced",
         description: "Classic Italian pizza with basil.",
         images: [
             "https://cdn.loveandlemons.com/wp-content/uploads/2023/07/margherita-pizza.jpg",
@@ -208,6 +224,8 @@ const recipes = [
         id: 9,
         name: "Chocolate Brownies",
         category: "Dessert",
+        prepTime: "Moderate",
+        difficulty: "Intermediate",
         description: "Rich and fudgy brownies.",
         images: [
             "https://images.immediate.co.uk/production/volatile/sites/30/2020/10/Gooey-Brownies-5627e49.jpg",
@@ -233,12 +251,14 @@ const recipes = [
         id: 10,
         name: "Fruit Smoothie",
         category: "Breakfast",
+        prepTime: "Quick Meal",
+        difficulty: "Easy",
         description: "Refreshing mixed fruit smoothie.",
         images: [
             "https://www.delmonte.com/sites/default/files/VibrantFruitSmoothies.jpg",
             "https://www.blessthismessplease.com/wp-content/uploads/2022/06/tropical-smoothie-recipe-5.jpg",
             "https://assets.sainsburys-groceries.co.uk/gol/tropical-fruit-smoothie/original.jpg",
-            "https://www.thedailymeal.com/img/gallery/layered-tropical-fruit-smoothie/shutterstock_370678421.jpg"
+            "https://www.thedailyymeal.com/img/gallery/layered-tropical-fruit-smoothie/shutterstock_370678421.jpg"
         ],
         ingredients: [
             { name: "Frozen Fruit (g)", base: 150 },

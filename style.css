@@ -1,8 +1,10 @@
-/* --- 1. DESIGN TOKENS (Variables) --- */
+/* ==========================================================================
+   1. DESIGN TOKENS & RESET
+   ========================================================================== */
 :root {
     --primary: #ff6b6b;
     --primary-dark: #ee5253;
-    --bg: #fdfdfd;
+    --bg: #f6f6f6;
     --card-bg: #ffffff;
     --text-main: #2d3436;
     --text-muted: #636e72;
@@ -21,7 +23,6 @@
     --shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
 }
 
-/* --- 2. GLOBAL RESET --- */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -36,7 +37,9 @@ body {
     line-height: 1.6;
 }
 
-/* --- 3. LAYOUT: NAVBAR & FOOTER --- */
+/* ==========================================================================
+   2. NAVIGATION BAR
+   ========================================================================== */
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -94,16 +97,16 @@ body {
     transition: var(--transition);
 }
 
+#searchInput:focus {
+    width: 320px;
+    border-color: var(--primary);
+}
+
 #categoryFilter {
     padding: 8px;
     border: 1px solid var(--border);
     background: var(--bg);
     border-radius: 20px;
-}
-
-#searchInput:focus {
-    width: 320px;
-    border-color: var(--primary);
 }
 
 #themeToggle {
@@ -115,14 +118,9 @@ body {
     font-size: 1.2rem;
 }
 
-.simple-footer {
-    text-align: center;
-    padding: 40px;
-    color: var(--text-muted);
-    font-size: 0.9rem;
-}
-
-/* --- 4. COMPONENTS: CARDS & GRIDS --- */
+/* ==========================================================================
+   3. HOME PAGE: HERO & GRID
+   ========================================================================== */
 .hero {
     text-align: center;
     padding: 60px 20px;
@@ -141,6 +139,7 @@ body {
     padding: 0 5% 50px;
 }
 
+/* Recipe Cards */
 .recipe-card {
     background: var(--card-bg);
     border-radius: var(--radius);
@@ -205,13 +204,16 @@ body {
     justify-content: center;
 }
 
-/* --- 5. RECIPE DETAIL PAGE --- */
+/* ==========================================================================
+   4. RECIPE DETAIL PAGE
+   ========================================================================== */
 .recipe-detail-container {
     max-width: 1100px;
     margin: 40px auto;
     padding: 0 5%;
 }
 
+/* Header & Metadata */
 .detail-header {
     text-align: center;
     margin-bottom: 40px;
@@ -234,6 +236,36 @@ body {
     text-transform: uppercase;
 }
 
+/* NEW: Stats Bar (Time/Difficulty) */
+.recipe-stats {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin: 20px 0;
+    padding: 15px 0;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.stat-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    font-weight: 700;
+}
+
+.stat-value {
+    font-weight: 600;
+    color: var(--text-main);
+}
+
+/* Layout Grid */
 .images-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -259,6 +291,7 @@ body {
     border: 1px solid var(--border);
 }
 
+/* Content Sections */
 .ingredients h3,
 .instructions h3 {
     font-size: 1.5rem;
@@ -267,20 +300,49 @@ body {
     display: inline-block;
 }
 
-.ingredients ul {
+/* Ingredients & Servings */
+.servings-control {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 12px;
+    margin-bottom: 25px;
+    padding: 12px;
+    background: var(--bg);
+    border-radius: 12px;
+    border: 1px solid var(--border);
+}
+
+.servings-control label {
+    font-weight: 700;
+    font-size: 0.9rem;
+}
+
+.servings-control input {
+    width: 60px;
+    padding: 5px;
+    border: 2px solid var(--primary);
+    border-radius: 8px;
+    text-align: center;
+    font-weight: 800;
+}
+
+#ingredientsList {
     list-style: none;
 }
 
-.ingredients li {
+#ingredientsList li {
     padding: 12px 0;
     border-bottom: 1px solid var(--border);
     color: var(--text-muted);
 }
 
-.ingredients li strong {
+#ingredientsList li strong {
     color: var(--primary);
+    font-size: 1.1rem;
 }
 
+/* Instructions */
 .instructions li {
     margin-bottom: 25px;
     font-size: 1.1rem;
@@ -296,35 +358,9 @@ body {
     font-style: italic;
 }
 
-/* --- 6. STATES & RESPONSIVE --- */
-.empty-state {
-    text-align: center;
-    grid-column: 1 / -1;
-    padding: 100px 20px;
-}
-
-.empty-state h2 {
-    color: var(--text-muted);
-    margin-bottom: 20px;
-}
-
-.browse-btn {
-    display: inline-block;
-    padding: 12px 30px;
-    background: var(--primary);
-    color: white;
-    text-decoration: none;
-    border-radius: 30px;
-    font-weight: 600;
-    transition: var(--transition);
-}
-
-.browse-btn:hover {
-    background: var(--primary-dark);
-    transform: scale(1.05);
-}
-
-/* --- FOOTER STYLES --- */
+/* ==========================================================================
+   5. FOOTER SECTION
+   ========================================================================== */
 .main-footer {
     background: var(--card-bg);
     border-top: 1px solid var(--border);
@@ -343,14 +379,13 @@ body {
 .footer-section h4 {
     font-size: 1.1rem;
     margin-bottom: 20px;
-    color: var(--text-main);
 }
 
 .footer-about {
     color: var(--text-muted);
     font-size: 0.95rem;
-    margin-top: 15px;
     max-width: 300px;
+    margin-top: 15px;
 }
 
 .footer-section ul {
@@ -373,7 +408,6 @@ body {
     padding-left: 5px;
 }
 
-/* Newsletter Input */
 .newsletter-form {
     display: flex;
     gap: 10px;
@@ -382,12 +416,11 @@ body {
 
 .newsletter-form input {
     flex-grow: 1;
-    padding: 12px 15px;
+    padding: 12px;
     border-radius: 10px;
     border: 1px solid var(--border);
     background: var(--bg);
     color: var(--text-main);
-    outline: none;
 }
 
 .newsletter-form button {
@@ -398,14 +431,8 @@ body {
     border-radius: 10px;
     cursor: pointer;
     font-weight: 600;
-    transition: var(--transition);
 }
 
-.newsletter-form button:hover {
-    background: var(--primary-dark);
-}
-
-/* Socials & Bottom */
 .social-links {
     display: flex;
     gap: 15px;
@@ -429,26 +456,12 @@ body {
     font-size: 0.85rem;
 }
 
-/* Responsive Footer */
+/* ==========================================================================
+   6. RESPONSIVE DESIGN
+   ========================================================================== */
 @media (max-width: 900px) {
     .footer-container {
         grid-template-columns: 1fr 1fr;
-    }
-}
-
-@media (max-width: 600px) {
-    .footer-container {
-        grid-template-columns: 1fr;
-        text-align: center;
-    }
-
-    .footer-about {
-        margin: 15px auto;
-    }
-
-    .social-links,
-    .newsletter-form {
-        justify-content: center;
     }
 }
 
@@ -475,11 +488,22 @@ body {
     }
 
     #searchInput {
-        width: 100%;
-    }
-
-    #searchInput:focus {
-        width: 100%;
+        width: 100% !important;
     }
 }
 
+@media (max-width: 600px) {
+    .footer-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .footer-about {
+        margin: 15px auto;
+    }
+
+    .social-links,
+    .newsletter-form {
+        justify-content: center;
+    }
+}
