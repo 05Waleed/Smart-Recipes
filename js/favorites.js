@@ -1,4 +1,4 @@
-import { recipes } from "./recipesData.js";
+import { recipes } from "../data/recipesData.js";
 import { favorites, createRecipeCard, toggleFavorite } from "./utils.js";
 
 export function renderFavoritesPage() {

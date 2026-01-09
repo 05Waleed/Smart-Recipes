@@ -3,7 +3,7 @@ export const recipes = [
         id: 1,
         name: "Creamy Pasta",
         category: "Dinner",
-        prepTime: "Quick Meal",
+        prepTime: "15min",
         difficulty: "Intermediate", 
         description: "Rich and creamy pasta with herbs.",
         images: [
@@ -32,7 +32,7 @@ export const recipes = [
         id: 2,
         name: "Avocado Toast",
         category: "Breakfast",
-        prepTime: "Quick Meal",
+        prepTime: "10min",
         difficulty: "Easy",
         description: "Simple and healthy breakfast.",
         images: [
@@ -59,7 +59,7 @@ export const recipes = [
         id: 3,
         name: "Classic Pancakes",
         category: "Breakfast",
-        prepTime: "Moderate",
+        prepTime: "25min",
         difficulty: "Intermediate",
         description: "Fluffy pancakes for a perfect morning.",
         images: [
@@ -87,7 +87,7 @@ export const recipes = [
         id: 4,
         name: "Grilled Chicken",
         category: "Dinner",
-        prepTime: "Moderate",
+        prepTime: "25min",
         difficulty: "Intermediate",
         description: "Juicy grilled chicken breast.",
         images: [
@@ -114,7 +114,7 @@ export const recipes = [
         id: 5,
         name: "Caesar Salad",
         category: "Lunch",
-        prepTime: "Quick Meal",
+        prepTime: "10min",
         difficulty: "Easy",
         description: "Fresh salad with creamy dressing.",
         images: [
@@ -141,7 +141,7 @@ export const recipes = [
         id: 6,
         name: "Beef Burger",
         category: "Dinner",
-        prepTime: "Quick Meal",
+        prepTime: "10min",
         difficulty: "Intermediate",
         description: "Juicy homemade beef burger.",
         images: [
@@ -168,7 +168,7 @@ export const recipes = [
         id: 7,
         name: "Vegetable Stir Fry",
         category: "Vegetarian",
-        prepTime: "Quick Meal",
+        prepTime: "10min",
         difficulty: "Easy",
         description: "Quick and colorful veggie stir fry.",
         images: [
@@ -196,7 +196,7 @@ export const recipes = [
         id: 8,
         name: "Margherita Pizza",
         category: "Vegetarian",
-        prepTime: "Moderate",
+        prepTime: "20min",
         difficulty: "Advanced",
         description: "Classic Italian pizza with basil.",
         images: [
@@ -224,7 +224,7 @@ export const recipes = [
         id: 9,
         name: "Chocolate Brownies",
         category: "Dessert",
-        prepTime: "Moderate",
+        prepTime: "20min",
         difficulty: "Intermediate",
         description: "Rich and fudgy brownies.",
         images: [
@@ -251,7 +251,7 @@ export const recipes = [
         id: 10,
         name: "Fruit Smoothie",
         category: "Breakfast",
-        prepTime: "Quick Meal",
+        prepTime: "5min",
         difficulty: "Easy",
         description: "Refreshing mixed fruit smoothie.",
         images: [

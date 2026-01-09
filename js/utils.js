@@ -51,6 +51,7 @@ export function renderNavbar() {
                 <input type="text" id="searchInput" placeholder="Search delicious recipes...">
             ` : ''}
             <button id="themeToggle">🌙</button>
+            <button id="themeToggle"><a href="profile.html">👤</a></button>
         </div>
     `;
 }

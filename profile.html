@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile | CookBook</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <nav id="main-navbar" class="navbar"></nav>
+
+    <main class="profile-container">
+        <!-- Profile Header -->
+        <div class="profile-header">
+            <div class="profile-bg"></div>
+            <div class="profile-info">
+                <img id="userImage" src="https://i.pravatar.cc/120" alt="User Image" class="profile-img">
+                <h2 id="userName">John Doe</h2>
+                <p class="profile-level">Level <span id="userLevel">5</span> Chef 👩‍🍳</p>
+            </div>
+        </div>
+
+        <!-- Level Progress -->
+        <div class="level-progress">
+            <p>Progress to next level</p>
+            <div class="progress-bar">
+                <div class="progress-fill" id="levelProgress"></div>
+            </div>
+        </div>
+
+        <!-- Stats Cards -->
+        <div class="profile-stats-cards">
+            <div class="stat-card">
+                <span id="recipesCooked">0</span>
+                <p>Recipes Cooked</p>
+            </div>
+            <div class="stat-card">
+                <span id="userPoints">0</span>
+                <p>Points</p>
+            </div>
+            <div class="stat-card">
+                <span id="badgesCount">0</span>
+                <p>Badges Earned</p>
+            </div>
+        </div>
+
+        <!-- Badges -->
+        <div class="badges-container">
+            <h4>Achievements</h4>
+            <div class="badges" id="badgesContainer"></div>
+        </div>
+
+        <!-- Recent Favorites -->
+        <section class="recent-recipes">
+            <h3>Recent Favorites</h3>
+            <div class="recipe-preview" id="recentFavorites"></div>
+        </section>
+    </main>
+
+    <footer id="main-footer" class="main-footer"></footer>
+    <script type="module" src="script.js"></script>
+    <script type="module" src="profile.js"></script>
+</body>
+
+</html>

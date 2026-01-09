@@ -1,4 +1,4 @@
-import { recipes } from "./recipesData.js";
+import { recipes } from "../data/recipesData.js";
 import { createRecipeCard, toggleFavorite } from "./utils.js";
 
 export function initHomePage() {

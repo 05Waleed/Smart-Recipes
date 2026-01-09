@@ -1,4 +1,4 @@
-import { recipes } from "./recipesData.js";
+import { recipes } from "../data/recipesData.js";
 
 export function initDetailPage() {
     const container = document.getElementById("recipeDetail");

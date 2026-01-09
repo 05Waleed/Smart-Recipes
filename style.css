@@ -9,6 +9,7 @@
 @import url('css/pages/home.css');
 @import url('css/pages/detail.css');
 @import url('css/pages/favorites.css');
+@import url('css/pages/profile.css');
 
 /* 4. Responsive Design (Last to ensure it overrides) */
 @import url('css/pages/responsive.css');
