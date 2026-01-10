@@ -5,7 +5,9 @@ import { initCardCarousels } from "./cardCarousel.js";
 export function initHomePage() {
     const recipeGrid = document.getElementById("recipeGrid");
 
-    // Get all possible inputs (Desktop and Mobile)
+    // Select the hero section to hide/show
+    const heroSection = document.querySelector(".hero");
+
     const dSearch = document.getElementById("searchInput");
     const mSearch = document.getElementById("mobileSearchInput");
     const dCat = document.getElementById("categoryFilter");
@@ -13,7 +15,7 @@ export function initHomePage() {
 
     if (!recipeGrid) return;
 
-    // 1. Populate both category filters
+    // 1. Populate category filters
     const categories = ["All", ...new Set(recipes.map(r => r.category))];
     const categoryHTML = categories
         .map(cat => `<option value="${cat}">${cat}</option>`)
@@ -24,7 +26,6 @@ export function initHomePage() {
 
     // 2. Define the Global Filter Function
     window.filterAndRender = () => {
-        // Read from whichever input is currently available/synced
         const term = (dSearch?.value || mSearch?.value || "").toLowerCase();
         const cat = dCat?.value || mCat?.value || "All";
 
@@ -34,6 +35,15 @@ export function initHomePage() {
             const matchesCat = cat === "All" || r.category === cat;
             return matchesSearch && matchesCat;
         });
+
+        // --- HIDE HERO TEXT IF NO RESULTS ---
+        if (heroSection) {
+            if (filtered.length === 0) {
+                heroSection.style.display = "none";
+            } else {
+                heroSection.style.display = "block";
+            }
+        }
 
         // 3. Render Results
         recipeGrid.innerHTML = filtered.length > 0
@@ -51,7 +61,5 @@ export function initHomePage() {
         initCardCarousels();
     };
 
-    // Note: Event listeners are already attached in utils.js (renderNavbar),
-    // but we call it once to initialize the grid.
     window.filterAndRender();
 }

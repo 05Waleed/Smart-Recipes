@@ -155,6 +155,7 @@
     font-weight: 600;
     cursor: pointer;
     transition: var(--transition);
+    text-decoration: none;
 }
 
 .view-more-bttn:hover {

@@ -2,9 +2,12 @@ import { topChefsData } from "../data/topChefsData.js";
 
 export function renderTopChefs() {
     const topChefsGrid = document.getElementById("topChefsGrid");
+
+    // 1. Select the hero section containing the "Discover. Cook. Enjoy." text
+    const heroSection = document.querySelector(".hero");
+
     if (!topChefsGrid) return;
 
-    // Select both sets of inputs (Desktop and Mobile)
     const dSearch = document.getElementById("searchInput");
     const mSearch = document.getElementById("mobileSearchInput");
     const dCat = document.getElementById("categoryFilter");
@@ -21,7 +24,6 @@ export function renderTopChefs() {
 
     // Define the Global Filter Function
     window.filterAndRender = () => {
-        // Read synced values from either input
         const term = (dSearch?.value || mSearch?.value || "").toLowerCase();
         const selectedLoc = dCat?.value || mCat?.value || "All";
 
@@ -30,6 +32,11 @@ export function renderTopChefs() {
             const matchesLoc = selectedLoc === "All" || (chef.location || 'Global') === selectedLoc;
             return matchesSearch && matchesLoc;
         });
+
+        // 2. Hide/Show Hero Section based on results
+        if (heroSection) {
+            heroSection.style.display = filtered.length === 0 ? "none" : "block";
+        }
 
         if (filtered.length === 0) {
             topChefsGrid.innerHTML = `
@@ -74,11 +81,10 @@ export function renderTopChefs() {
         }).join('');
     };
 
-    // Initial render
     window.filterAndRender();
 }
 
-// Global Event Delegation for Clicks remains outside to persist on re-renders
+// Global Event Delegation (Outside render function)
 document.addEventListener("click", (e) => {
     const btn = e.target.closest(".follow-btn");
     const card = e.target.closest(".chef-card");

@@ -51,7 +51,7 @@ export function renderNavbar() {
 
             <div class="nav-menu" id="navMenu">
                 <div class="navbar-left">
-                    <a href="/index.html" class="nav-link ${currentPage.includes('index') ? 'active' : ''}">Home</a>
+                    <a href="/index.html" class="nav-link ${currentPage.includes('index') ? 'active' : ''}">Discover</a>
                     <a href="/pages/favorites.html" class="nav-link ${currentPage.includes('favorites') ? 'active' : ''}">Favorites</a>
                     <a href="/pages/top-chefs.html" class="nav-link ${currentPage.includes('top-chefs') ? 'active' : ''}">Top Chefs</a>
                     <a href="/pages/profile.html" class="nav-link mobile-profile-link ${currentPage.includes('profile') ? 'active' : ''}">
