@@ -28,11 +28,10 @@ export function renderTopChefs() {
 
         // Batch DOM update
         topChefsGrid.innerHTML = filtered.map(chef => {
-            // Stable rating calculation
             const rating = (4.5 + (chef.id % 5) / 10).toFixed(1);
 
             return `
-                <div class="chef-card">
+                <div class="chef-card" data-id="${chef.id}">
                     <div class="chef-image-wrap">
                         <img 
                             src="${chef.image}" 
@@ -64,7 +63,7 @@ export function renderTopChefs() {
         }).join('');
     };
 
-    // Performance Optimization: Debounce search to prevent lagging while typing
+    // Debounce search input
     let debounceTimer;
     searchInput?.addEventListener("input", () => {
         clearTimeout(debounceTimer);
@@ -77,25 +76,34 @@ export function renderTopChefs() {
     filterAndRenderTopChefs();
 }
 
-// Global Event Delegation for Follow Buttons
+// Global Event Delegation for Clicks
 document.addEventListener("click", (e) => {
     const btn = e.target.closest(".follow-btn");
-    if (!btn) return;
+    const card = e.target.closest(".chef-card");
 
-    const chefId = parseInt(btn.dataset.id);
-    const chef = topChefsData.find(c => c.id === chefId);
+    // Handle Follow Button logic first
+    if (btn) {
+        const chefId = parseInt(btn.dataset.id);
+        const chef = topChefsData.find(c => c.id === chefId);
 
-    if (chef) {
-        chef.isFollowing = !chef.isFollowing;
-        btn.className = `follow-btn ${chef.isFollowing ? 'followed' : 'unfollowed'}`;
-        btn.innerHTML = chef.isFollowing ? '<span>Following</span>' : '<span>+ Follow</span>';
+        if (chef) {
+            chef.isFollowing = !chef.isFollowing;
+            btn.className = `follow-btn ${chef.isFollowing ? 'followed' : 'unfollowed'}`;
+            btn.innerHTML = chef.isFollowing ? '<span>Following</span>' : '<span>+ Follow</span>';
 
-        // Simple scale animation
-        btn.animate([
-            { transform: 'scale(1)' },
-            { transform: 'scale(0.9)' },
-            { transform: 'scale(1)' }
-        ], { duration: 150 });
+            btn.animate([
+                { transform: 'scale(1)' },
+                { transform: 'scale(0.9)' },
+                { transform: 'scale(1)' }
+            ], { duration: 150 });
+        }
+        return; // Important: Stop here so we don't trigger the card navigation
+    }
+
+    // Handle Card Navigation logic
+    if (card) {
+        const chefId = card.dataset.id;
+        window.location.href = `chef-profile.html?id=${chefId}`;
     }
 });
 
