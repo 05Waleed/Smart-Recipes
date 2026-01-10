@@ -37,22 +37,37 @@ export function renderNavbar() {
     // Get current page filename (e.g., 'index.html')
     const currentPage = window.location.pathname.split("/").pop() || "index.html";
 
+    // Determine placeholder based on current page
+    let searchPlaceholder = "Search...";
+    switch (currentPage) {
+        case "index.html":
+            searchPlaceholder = "Search delicious recipes...";
+            break;
+        case "favorites.html":
+            searchPlaceholder = "Search your favorite recipes...";
+            break;
+        case "top-chefs.html":
+            searchPlaceholder = "Search top chefs...";
+            break;
+        case "profile.html":
+            searchPlaceholder = "Search your recipes...";
+            break;
+    }
+
     nav.innerHTML = `
         <div class="navbar-left">
             <div class="logo">COOK<span>BOOK</span></div>
-            <a href="/index.html" class="${currentPage === '/index.html' ? 'active' : ''}">Home</a>
-            <a href="/pages/favorites.html" class="${currentPage === '/pages/favorites.html' ? 'active' : ''}">Favorites</a>
-            <a href="/pages/topChefs.html" class="${currentPage === '/pages/topChefs.html' ? 'active' : ''}">Top Chefs</a>
+            <a href="/index.html" class="${currentPage === 'index.html' ? 'active' : ''}">Home</a>
+            <a href="/pages/favorites.html" class="${currentPage === 'favorites.html' ? 'active' : ''}">Favorites</a>
+            <a href="/pages/top-chefs.html" class="${currentPage === 'top-chefs.html' ? 'active' : ''}">Top Chefs</a>
         </div>
         <div class="navbar-right">
-            ${currentPage === 'index.html' ? `
-                <select id="categoryFilter">
-                    <option value="All">All Categories</option>
-                </select>
-                <input type="text" id="searchInput" placeholder="Search delicious recipes...">
-            ` : ''}
+            <select id="categoryFilter">
+                <option value="All">All Categories</option>
+            </select>
+            <input type="text" id="searchInput" placeholder="${searchPlaceholder}">
             <button id="themeToggle">🌙</button>
-            <button id="themeToggle"><a href="pages/profile.html">👤</a></button>
+            <a href="/pages/profile.html" class="profile-btn">👤</a>
         </div>
     `;
 }
@@ -64,24 +79,24 @@ export function createRecipeCard(recipe) {
         <div class="recipe-card">
             <div class="card-carousel" data-id="${recipe.id}">
                 ${recipe.images
-                    .map(
-                        (img, index) => `
+            .map(
+                (img, index) => `
                         <img 
                             src="${img}" 
                             alt="${recipe.name}" 
                             class="carousel-image ${index === 0 ? "active" : ""}"
                         />
                     `
-                    )
-                    .join("")}
+            )
+            .join("")}
 
                 <div class="carousel-dots">
                     ${recipe.images
-                        .map(
-                            (_, index) =>
-                                `<span class="dot ${index === 0 ? "active" : ""}" data-index="${index}"></span>`
-                        )
-                        .join("")}
+            .map(
+                (_, index) =>
+                    `<span class="dot ${index === 0 ? "active" : ""}" data-index="${index}"></span>`
+            )
+            .join("")}
                 </div>
             </div>
 

@@ -1,119 +1,132 @@
-// data/chefProfile.js
-
 export const chefProfiles = {
     1: {
         name: "Luca Moretti",
+        category: "Traditional Italian", // Added Category
         image: "https://images.unsplash.com/photo-1548943487-a2e4e43b4853",
         location: "Florence, Italy",
         level: "Master Chef",
         experienceYears: 18,
-        bio: "Luca trained in traditional Tuscan kitchens before opening his own trattoria. He is renowned for rustic Italian flavors with a modern presentation, especially his handmade pasta and seasonal dishes.",
-        education: ["Culinary Arts, Florence Culinary Institute", "Internship at Osteria Francescana"],
+        bio: "Luca trained in traditional Tuscan kitchens before opening his own trattoria...",
         specialties: ["Italian", "Pasta", "Mediterranean"],
-        awards: ["Top Chef Italy 2019", "Michelin Bib Gourmand 2021"],
-        badges: ["🍝 Pasta Pro", "🏆 Top Chef 2024", "🌿 Seasonal Expert"],
-        stats: {
-            recipesPublished: 128,
-            followers: 54200,
-            likes: 210000,
-            signatureDishes: 12
-        },
-        signatureDishes: [
-            { name: "Truffle Tagliatelle", image: "https://images.unsplash.com/photo-1600891964599-f61ba0e24092" },
-            { name: "Tuscan Ribollita", image: "https://images.unsplash.com/photo-1572441710571-1f6f0e2a544e" }
-        ],
-        featuredRecipes: [1, 7, 12],
-        socials: {
-            instagram: "@chef_luca",
-            website: "https://lucamoretti.cooking",
-            twitter: "@lucamoretti"
-        }
+        badges: ["🍝 Pasta Pro", "🏆 Top Chef 2024"],
+        stats: { recipesPublished: 128, followers: 54200, likes: 210000 },
+        isFollowing: false
     },
-
     2: {
         name: "Aisha Al-Farsi",
+        category: "Modern Fusion", // Added Category
         image: "https://images.unsplash.com/photo-1557862921-37829c790f19",
         location: "Dubai, UAE",
         level: "Executive Chef",
         experienceYears: 14,
-        bio: "Aisha blends traditional Emirati flavors with contemporary fusion techniques. Her dishes are bold, aromatic, and visually stunning, perfect for modern fine dining.",
-        education: ["Le Cordon Bleu, Dubai", "Internship at Zuma Dubai"],
+        bio: "Aisha blends traditional Emirati flavors with contemporary fusion...",
         specialties: ["Middle Eastern", "Fusion", "Grilling"],
-        awards: ["Best Fusion Chef 2020", "Emirati Culinary Award 2022"],
-        badges: ["🌶️ Spice Master", "✨ Fusion Star", "🔥 Grill Expert"],
-        stats: {
-            recipesPublished: 94,
-            followers: 38700,
-            likes: 162500,
-            signatureDishes: 8
-        },
-        signatureDishes: [
-            { name: "Spiced Lamb Kofta", image: "https://images.unsplash.com/photo-1605475127542-39d0d3d2a2f4" },
-            { name: "Date & Orange Tart", image: "https://images.unsplash.com/photo-1565958011703-44a1e24c41a5" }
-        ],
-        featuredRecipes: [3, 9, 21],
-        socials: {
-            instagram: "@chef.aisha",
-            website: null,
-            twitter: "@aishaalfarsi"
-        }
+        badges: ["🌶️ Spice Master", "✨ Fusion Star"],
+        stats: { recipesPublished: 94, followers: 38700, likes: 162500 },
+        isFollowing: true
     },
-
     3: {
         name: "Ethan Walker",
+        category: "American BBQ",
         image: "https://images.unsplash.com/photo-1527980965255-d3b416303d12",
         location: "Austin, USA",
         level: "Senior Chef",
         experienceYears: 11,
-        bio: "Ethan transforms classic comfort food into refined dishes. Known for his BBQ mastery and innovative takes on American classics.",
-        education: ["Austin Culinary Academy", "Apprenticeship at Franklin Barbecue"],
+        bio: "Ethan transforms classic comfort food into refined dishes...",
         specialties: ["American", "BBQ", "Comfort Food"],
-        awards: ["BBQ Master Challenge Winner 2018", "Best Comfort Dish 2021"],
         badges: ["🔥 BBQ King", "❤️ Crowd Favorite"],
-        stats: {
-            recipesPublished: 76,
-            followers: 29100,
-            likes: 98000,
-            signatureDishes: 5
-        },
-        signatureDishes: [
-            { name: "Smoked Brisket", image: "https://images.unsplash.com/photo-1600891964599-f61ba0e24092" },
-            { name: "Mac & Cheese Supreme", image: "https://images.unsplash.com/photo-1572441710571-1f6f0e2a544e" }
-        ],
-        featuredRecipes: [5, 14],
-        socials: {
-            instagram: "@ethan_cooks",
-            website: null
-        }
+        stats: { recipesPublished: 76, followers: 29100, likes: 98000 },
+        isFollowing: false
     },
-
     4: {
         name: "Sofia Martinez",
+        category: "Plant-Based",
         image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2",
         location: "Barcelona, Spain",
         level: "Plant-Based Expert",
         experienceYears: 9,
-        bio: "Sofia crafts colorful and vibrant plant-based meals. She focuses on healthy ingredients without compromising on flavor or creativity.",
-        education: ["Barcelona Culinary Institute", "Plant-Based Nutrition Certification"],
+        bio: "Sofia crafts colorful and vibrant plant-based meals...",
         specialties: ["Vegetarian", "Vegan", "Healthy"],
-        awards: ["Vegan Chef of the Year 2022"],
-        badges: ["🥬 Green Chef", "💚 Healthy Choice", "🌱 Organic Advocate"],
-        stats: {
-            recipesPublished: 112,
-            followers: 46800,
-            likes: 175400,
-            signatureDishes: 7
-        },
-        signatureDishes: [
-            { name: "Rainbow Buddha Bowl", image: "https://images.unsplash.com/photo-1600891964599-f61ba0e24092" },
-            { name: "Stuffed Bell Peppers", image: "https://images.unsplash.com/photo-1572441710571-1f6f0e2a544e" }
-        ],
-        featuredRecipes: [8, 15, 22],
-        socials: {
-            instagram: "@sofia_vegan",
-            website: "https://sofiavegankitchen.com"
-        }
+        badges: ["🥬 Green Chef", "🌱 Organic Advocate"],
+        stats: { recipesPublished: 112, followers: 46800, likes: 175400 },
+        isFollowing: true
+    },
+    5: {
+        name: "Kenji Nakamura",
+        category: "Japanese Fine Dining",
+        image: "https://images.unsplash.com/photo-1603415526960-f7e0328b9b63",
+        location: "Tokyo, Japan",
+        level: "Master Sushi Chef",
+        experienceYears: 22,
+        bio: "A precisionist known for his 'knife-to-plate' philosophy and rare seafood sourcing.",
+        specialties: ["Japanese", "Sushi", "Seafood"],
+        badges: ["🔪 Blade Master", "🌊 Seafood King"],
+        stats: { recipesPublished: 65, followers: 82000, likes: 310000 },
+        isFollowing: false
+    },
+    6: {
+        name: "Marie Dubois",
+        category: "Pastry & Baking",
+        image: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1",
+        location: "Paris, France",
+        level: "Head Pastry Chef",
+        experienceYears: 12,
+        bio: "Former lead at a 3-star Michelin bakery, Marie specializes in delicate patisserie.",
+        specialties: ["Desserts", "Pastry", "Baking"],
+        badges: ["🥐 Croissant Queen", "🍰 Sugar Artist"],
+        stats: { recipesPublished: 145, followers: 61000, likes: 420000 },
+        isFollowing: false
+    },
+    7: {
+        name: "Carlos Rivera",
+        category: "Authentic Mexican",
+        image: "https://images.unsplash.com/photo-1547425260-76bcadfb4f2c",
+        location: "Oaxaca, Mexico",
+        level: "Senior Chef",
+        experienceYears: 16,
+        bio: "Preserving ancestral Mayan and Aztec cooking techniques with modern spice blends.",
+        specialties: ["Mexican", "Street Food", "Spicy"],
+        badges: ["🌶️ Mole Expert", "🌮 Taco Titan"],
+        stats: { recipesPublished: 88, followers: 34000, likes: 115000 },
+        isFollowing: true
+    },
+    8: {
+        name: "Nina Petrova",
+        category: "Eastern European",
+        image: "https://images.unsplash.com/photo-1542206395-9feb3edaa68d",
+        location: "Kyiv, Ukraine",
+        level: "Executive Chef",
+        experienceYears: 10,
+        bio: "Specializing in heart-warming Slavic cuisine with a contemporary fine-dining twist.",
+        specialties: ["Eastern European", "Comfort Food"],
+        badges: ["🥟 Dumpling Diva", "🥣 Soup Specialist"],
+        stats: { recipesPublished: 52, followers: 19500, likes: 64000 },
+        isFollowing: false
+    },
+    9: {
+        name: "Oliver Grant",
+        category: "Farm-to-Table",
+        image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d",
+        location: "London, UK",
+        level: "Sustainability Lead",
+        experienceYears: 13,
+        bio: "A pioneer in zero-waste cooking, Oliver sources everything within a 50-mile radius.",
+        specialties: ["British", "Farm-to-Table", "Seasonal"],
+        badges: ["♻️ Zero Waste", "🚜 Field Expert"],
+        stats: { recipesPublished: 91, followers: 42000, likes: 132000 },
+        isFollowing: false
+    },
+    10: {
+        name: "Priya Malhotra",
+        category: "Indian Heritage",
+        image: "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e",
+        location: "Mumbai, India",
+        level: "Master of Spices",
+        experienceYears: 19,
+        bio: "Blending regional Indian family secrets with modern vegetarian aesthetics.",
+        specialties: ["Indian", "Curries", "Vegetarian"],
+        badges: ["🍛 Curry Connoisseur", "🌿 Spice Alchemist"],
+        stats: { recipesPublished: 170, followers: 98000, likes: 580000 },
+        isFollowing: true
     }
-
-    // Add remaining chefs in same enriched format (Kenji, Marie, Carlos, Nina, Oliver, Priya)
 };

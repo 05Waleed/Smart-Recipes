@@ -3,6 +3,8 @@ import { initHomePage } from "./js/home.js";
 import { initDetailPage } from "./js/detail.js";
 import { renderFavoritesPage } from "./js/favorites.js";
 import { renderProfile } from "./js/profile.js";
+import { renderTopChefs } from "./js/topChefs.js";
+
 
 document.addEventListener("DOMContentLoaded", () => {
     renderNavbar();
@@ -24,6 +26,9 @@ document.addEventListener("DOMContentLoaded", () => {
             break;
         case path.endsWith("profile.html"):
             renderProfile();
+            break;
+        case path.endsWith("/pages/top-chefs.html"):
+            renderTopChefs();
             break;
         default:
             console.warn("No page-specific scripts to run for this path:", path);

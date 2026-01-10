@@ -273,4 +273,273 @@ export const recipes = [
         ],
         tips: "Frozen fruit makes the smoothie thicker."
     },
+    {
+        id: 11,
+        name: "Shrimp Scampi",
+        category: "Dinner",
+        prepTime: "20min",
+        difficulty: "Intermediate",
+        description: "Garlicky, buttery shrimp served over pasta.",
+        images: [
+            "https://bakerbynature.com/wp-content/uploads/2023/02/shrimp-scampi-119.jpg",
+            "https://krollskorner.com/wp-content/uploads/2020/02/Shrimpscampialfredo12-scaled.jpg",
+            "https://thegirlonbloor.com/wp-content/uploads/2023/08/Olive-Garden-Shrimp-Scampi-9.jpg",
+            "https://natashaskitchen.com/wp-content/uploads/2025/07/Shrimp-Scampi-5.jpg"
+        ],
+        ingredients: [
+            { name: "Shrimp (g)", base: 150 },
+            { name: "Garlic (cloves)", base: 3 },
+            { name: "Butter (g)", base: 25 },
+            { name: "Lemon juice (ml)", base: 15 }
+        ],
+        instructions: [
+            "Cook pasta in salted water until al dente.",
+            "Sauté minced garlic in butter until fragrant.",
+            "Add shrimp and cook until pink and opaque.",
+            "Stir in lemon juice and a splash of pasta water.",
+            "Toss with pasta and garnish with parsley."
+        ],
+        tips: "Don't overcook the shrimp; they only need 2-3 minutes total."
+    },
+    {
+        id: 12,
+        name: "Lentil Dahl",
+        category: "Vegetarian",
+        prepTime: "35min",
+        difficulty: "Easy",
+        description: "Comforting Indian red lentil stew.",
+        images: [
+            "https://veganhuggs.com/wp-content/uploads/2020/09/red-lentil-dahl-square-crop-a.jpg",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRcawkcC4fzObMrvRKo2W5kaxKobLxxfMntAg&s",
+            "https://veggiedesserts.com/wp-content/uploads/2025/06/red-lentil-dahl-3bsq.jpg",
+            "https://domesticgothess.com/wp-content/uploads/2018/05/red-lentil-dhal-roasted-cauliflower-butternut-squash.jpg"
+        ],
+        ingredients: [
+            { name: "Red Lentils (g)", base: 100 },
+            { name: "Coconut Milk (ml)", base: 100 },
+            { name: "Turmeric (tsp)", base: 0.5 },
+            { name: "Onion", base: 0.5 }
+        ],
+        instructions: [
+            "Rinse lentils thoroughly.",
+            "Sauté onions and spices in a pot.",
+            "Add lentils and water/broth; simmer for 20 minutes.",
+            "Stir in coconut milk for creaminess.",
+            "Serve with rice or naan."
+        ],
+        tips: "A squeeze of lime at the end brightens the earthy flavors."
+    },
+    {
+        id: 13,
+        name: "Beef Tacos",
+        category: "Dinner",
+        prepTime: "15min",
+        difficulty: "Easy",
+        description: "Classic street-style beef tacos.",
+        images: [
+            "https://feelgoodfoodie.net/wp-content/uploads/2024/04/Ground-Beef-Tacos-TIMG.jpg",
+            "https://oliviaadriance.com/wp-content/uploads/2023/07/Final_3_Crispy_Baked_Beef_Tacos_grain-free-dairy-free.jpg",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRyEk6hOsIcEIGQ930PlgO-UqnJ9ZNxkBY7Jw&s",
+            "https://cdn.urbancookery.com/2021/01/bbq_tacos_1.jpg__900x739_q85_crop.jpg"
+        ],
+        ingredients: [
+            { name: "Ground Beef (g)", base: 150 },
+            { name: "Taco Shells", base: 3 },
+            { name: "Cumin (tsp)", base: 1 }
+        ],
+        instructions: [
+            "Brown beef in a pan and drain excess fat.",
+            "Add cumin, chili powder, and a splash of water.",
+            "Warm taco shells in the oven.",
+            "Fill shells with beef and your choice of toppings.",
+            "Serve with lime wedges."
+        ],
+        tips: "Toast the taco shells for 2 minutes to keep them crunchy."
+    },
+    {
+        id: 14,
+        name: "Japanese Ramen",
+        category: "Lunch",
+        prepTime: "40min",
+        difficulty: "Advanced",
+        description: "Savory noodle soup with soft-boiled egg.",
+        images: [
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLQxLm2PI5YnBZFuK-V8K6hDKFkrMTI0uDoA&s",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBffXcuaiXrJPQXmQK2fD9V8DSLtL7qdONjw&s",
+            "https://heissehimbeeren.com/wp-content/uploads/2024/12/1500-x-1500-5-1024x1024.webp",
+            "https://www.theflavorbender.com/wp-content/uploads/2019/01/Easy-Chicken-Ramen-Featured-500x375.jpg"
+        ],
+        ingredients: [
+            { name: "Ramen Noodles (g)", base: 100 },
+            { name: "Broth (ml)", base: 400 },
+            { name: "Egg", base: 1 },
+            { name: "Soy Sauce (ml)", base: 15 }
+        ],
+        instructions: [
+            "Boil egg for exactly 6.5 minutes, then cool in ice water.",
+            "Simmer broth with ginger, garlic, and soy sauce.",
+            "Cook noodles separately.",
+            "Combine noodles and broth in a deep bowl.",
+            "Top with halved egg, scallions, and nori."
+        ],
+        tips: "Use high-quality broth as it is the soul of the dish."
+    },
+    {
+        id: 15,
+        name: "Caprese Skewers",
+        category: "Appetizer",
+        prepTime: "10min",
+        difficulty: "Easy",
+        description: "Fresh mozzarella, tomato, and basil on sticks.",
+        images: [
+            "https://www.dinneratthezoo.com/wp-content/uploads/2017/11/caprese-skewers-4.jpg",
+            "https://i2.wp.com/www.downshiftology.com/wp-content/uploads/2021/06/Caprese-Skewers-main-1.jpg",
+            "https://therecipecritic.com/wp-content/uploads/2022/06/capreseskewers-1.jpg",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSfiwHlUqrT0cmc-x23p4adejZHFBb9h9MHzw&s"
+        ],
+        ingredients: [
+            { name: "Cherry Tomatoes", base: 6 },
+            { name: "Mozzarella Balls", base: 6 },
+            { name: "Basil Leaves", base: 6 }
+        ],
+        instructions: [
+            "Thread a tomato, a basil leaf, and a mozzarella ball onto a toothpick.",
+            "Repeat for all ingredients.",
+            "Drizzle with balsamic glaze.",
+            "Sprinkle with sea salt and pepper."
+        ],
+        tips: "Use high-quality extra virgin olive oil for drizzling."
+    },
+    {
+        id: 16,
+        name: "Falafel Wrap",
+        category: "Vegetarian",
+        prepTime: "30min",
+        difficulty: "Intermediate",
+        description: "Middle Eastern chickpea fritters in pita.",
+        images: [
+            "https://static.toiimg.com/photo/62708678.cms",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDEUROivPufPclECTg1u056waGd9oCIPBGlA&s",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJfh1P6ez_Bm8UGBQF8IwGv282PLCLqy5iSg&s",
+            "https://avocadoskillet.com/wp-content/uploads/2022/05/IMG_3807_2_20.jpg"
+        ],
+        ingredients: [
+            { name: "Chickpeas (g)", base: 150 },
+            { name: "Pita Bread", base: 1 },
+            { name: "Tahini (ml)", base: 20 }
+        ],
+        instructions: [
+            "Pulse chickpeas with herbs and spices in a processor.",
+            "Form into small balls and fry until golden brown.",
+            "Warm the pita bread.",
+            "Spread tahini or hummus on the pita.",
+            "Add falafel and fresh cucumber salad."
+        ],
+        tips: "Don't use canned chickpeas for the best texture; soak dry ones overnight."
+    },
+    {
+        id: 17,
+        name: "Mushroom Risotto",
+        category: "Dinner",
+        prepTime: "45min",
+        difficulty: "Advanced",
+        description: "Creamy Italian rice dish with earthy mushrooms.",
+        images: [
+            "https://www.eatingwell.com/thmb/cjGMOCaxz6Vw1FQPA83AMF1vn-Y=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/mushroom-risotto-beauty-8025316-4000x4000-203a642728ca49c895b487d6df0dc6e3.jpg",
+            "https://vintagekitchennotes.com/wp-content/uploads/2013/07/Mushroom-risotto-close-up.jpg",
+            "https://cdn.shopify.com/s/files/1/0647/8410/5716/files/20250515192640-mushroom-risotto-recipe-lifestyle.jpg?v=1747337202",
+            "https://louisianacookin.com/wp-content/uploads/2023/09/web-duckrisotto_1032.jpg"
+        ],
+        ingredients: [
+            { name: "Arborio Rice (g)", base: 80 },
+            { name: "Mushrooms (g)", base: 100 },
+            { name: "Vegetable Broth (ml)", base: 300 }
+        ],
+        instructions: [
+            "Sauté mushrooms until browned and set aside.",
+            "Toast rice in a pan with butter and onions.",
+            "Add warm broth one ladle at a time, stirring constantly.",
+            "Wait for broth to be absorbed before adding more.",
+            "Stir in mushrooms and parmesan once rice is creamy."
+        ],
+        tips: "Patience is key; stirring releases the starch for creaminess."
+    },
+    {
+        id: 18,
+        name: "French Toast",
+        category: "Breakfast",
+        prepTime: "15min",
+        difficulty: "Easy",
+        description: "Classic sweet eggy bread.",
+        images: [
+            "https://www.simplyrecipes.com/thmb/YD03bei5afLwaiNnB8-FuHhj9yM=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/Simply-Recipes-Best-French-Toast-LEAD-5-9f0a042bdcb14a5fb526e0f772663877.jpg",
+            "https://cdn.loveandlemons.com/wp-content/uploads/2024/08/french-toast-recipe.jpg",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6Gq7VwvAZSXdWD5Ntd1lF9TZumagsydbkvg&s",
+            "https://www.chilitochoc.com/wp-content/uploads/2025/04/buttermilk-french-toast-recipe-500x500.jpg"
+        ],
+        ingredients: [
+            { name: "Brioche slices", base: 2 },
+            { name: "Eggs", base: 1 },
+            { name: "Cinnamon (tsp)", base: 0.5 }
+        ],
+        instructions: [
+            "Whisk eggs, milk, and cinnamon in a shallow bowl.",
+            "Dip bread slices until soaked but not falling apart.",
+            "Fry in a buttered pan over medium heat.",
+            "Flip when golden brown.",
+            "Serve with maple syrup and berries."
+        ],
+        tips: "Use day-old bread so it absorbs the custard without getting soggy."
+    },
+    {
+        id: 19,
+        name: "Greek Souvlaki",
+        category: "Lunch",
+        prepTime: "30min",
+        difficulty: "Intermediate",
+        description: "Skewered meat with tzatziki sauce.",
+        images: [
+            "https://www.seriouseats.com/thmb/qAysZs1vJYvMCSSpsHRqRlsvExQ=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/__opt__aboutcom__coeus__resources__content_migration__serious_eats__seriouseats.com__recipes__images__20090319-pork-souvlaki-9a80ec7534d3427c888d2d0f939540a6.jpg",
+            "https://flavorthemoments.com/wp-content/uploads/2024/08/greek-chicken-souvlaki-1.jpg",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTF4qLy840QU8SB5nbUyVMvz1U6qIfg7SmrEQ&s",
+            "https://www.jocooks.com/wp-content/uploads/2013/07/lamb-souvlaki-1-9.jpg"
+        ],
+        ingredients: [
+            { name: "Pork or Chicken (g)", base: 200 },
+            { name: "Yogurt (ml)", base: 50 },
+            { name: "Cucumber (g)", base: 30 }
+        ],
+        instructions: [
+            "Marinate meat in lemon, oregano, and oil for 1 hour.",
+            "Thread meat onto skewers and grill until charred.",
+            "Grate cucumber and mix with yogurt and garlic for tzatziki.",
+            "Serve meat inside a pita with the sauce."
+        ],
+        tips: "Soak wooden skewers in water for 20 minutes to prevent burning."
+    },
+    {
+        id: 20,
+        name: "Berry Sorbet",
+        category: "Dessert",
+        prepTime: "10min",
+        difficulty: "Easy",
+        description: "Dairy-free frozen fruit treat.",
+        images: [
+            "https://www.simplyorganic.com/media/wysiwyg/tmp/simply-oragnic-No-Churn-Mixed-Berry-Sorbet-1080x1080-thumbnail.jpg",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSyQiCeEo_7YwMzSsWUWf1W7r_JVyIyjiQ6ww&s",
+            "https://www.lecremedelacrumb.com/wp-content/uploads/2014/06/raspberry-sorbet-1-500x500.jpg",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5UKbdOPcbcr7f98k8EKnMLovA37mfA4hPUg&s"
+        ],
+        ingredients: [
+            { name: "Frozen Berries (g)", base: 200 },
+            { name: "Honey or Agave (ml)", base: 20 }
+        ],
+        instructions: [
+            "Place frozen berries in a high-powered blender.",
+            "Add sweetener and a tiny splash of water.",
+            "Blend until smooth, using a tamper if necessary.",
+            "Serve immediately or freeze for a firmer texture."
+        ],
+        tips: "Add a leaf of mint while blending for extra freshness."
+    }
 ];
