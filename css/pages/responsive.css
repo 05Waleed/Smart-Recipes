@@ -1,12 +1,82 @@
 /* ==========================================================================
-   6. RESPONSIVE DESIGN
+   RESPONSIVE DESIGN (Breakpoints)
    ========================================================================== */
+
+/* --- Tablet / Large Mobile (1024px) --- */
+@media (max-width: 1024px) {
+
+    /* Navigation Toggles */
+    .nav-mobile-controls,
+    .hamburger {
+        display: flex;
+    }
+
+    .desktop-only {
+        display: none !important;
+    }
+
+    /* Mobile Menu Overlay */
+    .nav-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: var(--card-bg);
+        flex-direction: column;
+        padding: 2rem 0;
+        border-bottom: 1px solid var(--border);
+    }
+
+    .nav-menu.show {
+        display: flex;
+    }
+
+    .navbar-left {
+        flex-direction: column;
+        align-items: center;
+        margin-left: 0;
+        gap: 1.5rem;
+    }
+
+    .mobile-profile-link {
+        display: block;
+    }
+
+    /* Mobile Form Elements */
+    .mobile-search-tray input,
+    .mobile-search-tray select {
+        flex: 1;
+        padding: 10px;
+        border-radius: 6px;
+        border: 1px solid var(--border);
+        background: var(--body-bg);
+        color: var(--text-main);
+        font-size: 14px;
+    }
+
+    /* Hamburger Animation to 'X' */
+    .hamburger.open span:nth-child(1) {
+        transform: translateY(9px) rotate(45deg);
+    }
+
+    .hamburger.open span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .hamburger.open span:nth-child(3) {
+        transform: translateY(-9px) rotate(-45deg);
+    }
+}
+
+/* --- Mid-Size Tablet (900px) --- */
 @media (max-width: 900px) {
     .footer-container {
         grid-template-columns: 1fr 1fr;
     }
 }
 
+/* --- Small Tablet / Detail Views (850px) --- */
 @media (max-width: 850px) {
     .detail-content {
         grid-template-columns: 1fr;
@@ -18,34 +88,53 @@
     }
 }
 
+/* --- Large Mobile / Standard Tablet (768px) --- */
 @media (max-width: 768px) {
+
+    /* Navbar Adjustments */
     .navbar {
-        flex-direction: column;
         gap: 15px;
     }
 
     .navbar-right {
         width: 100%;
-        justify-content: center;
+        justify-content: end;
     }
 
     #searchInput {
         width: 100% !important;
     }
-}
 
-@media (max-width: 600px) {
+    /* Footer Adjustments */
     .footer-container {
         grid-template-columns: 1fr;
+        gap: 40px;
         text-align: center;
     }
 
-    .footer-about {
-        margin: 15px auto;
+    .footer-tagline {
+        margin: 0 auto 25px;
     }
 
     .social-links,
     .newsletter-form {
         justify-content: center;
+        margin: 0 auto;
+    }
+
+    .newsletter-form {
+        max-width: 300px;
+    }
+
+    .footer-bottom-content {
+        flex-direction: column;
+        gap: 15px;
+    }
+}
+
+/* --- Small Mobile (600px) --- */
+@media (max-width: 600px) {
+    .footer-about {
+        margin: 15px auto;
     }
 }

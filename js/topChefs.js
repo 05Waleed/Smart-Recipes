@@ -1,24 +1,29 @@
 import { topChefsData } from "../data/topChefsData.js";
 
-const topChefsGrid = document.getElementById("topChefsGrid");
-
 export function renderTopChefs() {
+    const topChefsGrid = document.getElementById("topChefsGrid");
     if (!topChefsGrid) return;
 
-    const searchInput = document.getElementById("searchInput");
-    const categoryFilter = document.getElementById("categoryFilter");
+    // Select both sets of inputs (Desktop and Mobile)
+    const dSearch = document.getElementById("searchInput");
+    const mSearch = document.getElementById("mobileSearchInput");
+    const dCat = document.getElementById("categoryFilter");
+    const mCat = document.getElementById("mobileCategoryFilter");
 
-    // Dynamic Category/Location Filter Population
-    if (categoryFilter && categoryFilter.options.length <= 1) {
-        const locations = ["All", ...new Set(topChefsData.map(c => c.location || 'Global'))];
-        categoryFilter.innerHTML = locations
-            .map(loc => `<option value="${loc}">${loc}</option>`)
-            .join("");
-    }
+    // Dynamic Location Filter Population
+    const locations = ["All", ...new Set(topChefsData.map(c => c.category || 'Global'))];
+    const locationHTML = locations
+        .map(loc => `<option value="${loc}">${loc}</option>`)
+        .join("");
 
-    const filterAndRenderTopChefs = () => {
-        const term = searchInput?.value.toLowerCase() || "";
-        const selectedLoc = categoryFilter?.value || "All";
+    if (dCat) dCat.innerHTML = locationHTML;
+    if (mCat) mCat.innerHTML = locationHTML;
+
+    // Define the Global Filter Function
+    window.filterAndRender = () => {
+        // Read synced values from either input
+        const term = (dSearch?.value || mSearch?.value || "").toLowerCase();
+        const selectedLoc = dCat?.value || mCat?.value || "All";
 
         const filtered = topChefsData.filter(chef => {
             const matchesSearch = chef.name.toLowerCase().includes(term);
@@ -26,10 +31,17 @@ export function renderTopChefs() {
             return matchesSearch && matchesLoc;
         });
 
-        // Batch DOM update
+        if (filtered.length === 0) {
+            topChefsGrid.innerHTML = `
+                <div class="empty-state">
+                    <h2>No chefs found</h2>
+                    <p>Try searching for a different name or location.</p>
+                </div>`;
+            return;
+        }
+
         topChefsGrid.innerHTML = filtered.map(chef => {
             const rating = (4.5 + (chef.id % 5) / 10).toFixed(1);
-
             return `
                 <div class="chef-card" data-id="${chef.id}">
                     <div class="chef-image-wrap">
@@ -38,7 +50,6 @@ export function renderTopChefs() {
                             alt="${chef.name}" 
                             class="chef-image" 
                             loading="lazy"
-                            decoding="async"
                             onerror="this.src='https://via.placeholder.com/400x400?text=Chef+Profile'"
                         >
                         <button 
@@ -63,53 +74,28 @@ export function renderTopChefs() {
         }).join('');
     };
 
-    // Debounce search input
-    let debounceTimer;
-    searchInput?.addEventListener("input", () => {
-        clearTimeout(debounceTimer);
-        debounceTimer = setTimeout(filterAndRenderTopChefs, 150);
-    });
-
-    categoryFilter?.addEventListener("change", filterAndRenderTopChefs);
-
     // Initial render
-    filterAndRenderTopChefs();
+    window.filterAndRender();
 }
 
-// Global Event Delegation for Clicks
+// Global Event Delegation for Clicks remains outside to persist on re-renders
 document.addEventListener("click", (e) => {
     const btn = e.target.closest(".follow-btn");
     const card = e.target.closest(".chef-card");
 
-    // Handle Follow Button logic first
     if (btn) {
         const chefId = parseInt(btn.dataset.id);
         const chef = topChefsData.find(c => c.id === chefId);
-
         if (chef) {
             chef.isFollowing = !chef.isFollowing;
             btn.className = `follow-btn ${chef.isFollowing ? 'followed' : 'unfollowed'}`;
             btn.innerHTML = chef.isFollowing ? '<span>Following</span>' : '<span>+ Follow</span>';
-
-            btn.animate([
-                { transform: 'scale(1)' },
-                { transform: 'scale(0.9)' },
-                { transform: 'scale(1)' }
-            ], { duration: 150 });
         }
-        return; // Important: Stop here so we don't trigger the card navigation
+        return;
     }
 
-    // Handle Card Navigation logic
     if (card) {
         const chefId = card.dataset.id;
         window.location.href = `chef-profile.html?id=${chefId}`;
     }
 });
-
-// Boot application
-if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", renderTopChefs);
-} else {
-    renderTopChefs();
-}

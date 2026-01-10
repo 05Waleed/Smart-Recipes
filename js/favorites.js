@@ -5,24 +5,32 @@ import { initCardCarousels } from "./cardCarousel.js";
 export function renderFavoritesPage() {
     const favGrid = document.getElementById("favoritesGrid");
     const heroHeading = document.querySelector(".hero");
-    const searchInput = document.getElementById("searchInput");
-    const categoryFilter = document.getElementById("categoryFilter");
+    
+    // Select both sets of inputs
+    const dSearch = document.getElementById("searchInput");
+    const mSearch = document.getElementById("mobileSearchInput");
+    const dCat = document.getElementById("categoryFilter");
+    const mCat = document.getElementById("mobileCategoryFilter");
 
     if (!favGrid) return;
 
-    // Populate category filter dynamically (only from favorite recipes)
+    // Get only the recipes that are in favorites
     const favRecipes = recipes.filter(r => favorites.includes(r.id));
-    if (categoryFilter) {
-        const categories = ["All", ...new Set(favRecipes.map(r => r.category))];
-        categoryFilter.innerHTML = categories
-            .map(cat => `<option value="${cat}">${cat}</option>`)
-            .join("");
-    }
 
-    // Filter and render function
-    const filterAndRenderFavorites = () => {
-        const term = searchInput?.value.toLowerCase() || "";
-        const cat = categoryFilter?.value || "All";
+    // Populate category filters (Desktop and Mobile)
+    const categories = ["All", ...new Set(favRecipes.map(r => r.category))];
+    const categoryHTML = categories
+        .map(cat => `<option value="${cat}">${cat}</option>`)
+        .join("");
+
+    if (dCat) dCat.innerHTML = categoryHTML;
+    if (mCat) mCat.innerHTML = categoryHTML;
+
+    // The Global Refresh/Filter Function
+    window.filterAndRender = () => {
+        // Read synced values
+        const term = (dSearch?.value || mSearch?.value || "").toLowerCase();
+        const cat = dCat?.value || mCat?.value || "All";
 
         const filtered = favRecipes.filter(recipe => {
             const matchesSearch = recipe.name.toLowerCase().includes(term);
@@ -30,12 +38,19 @@ export function renderFavoritesPage() {
             return matchesSearch && matchesCat;
         });
 
-        if (filtered.length === 0) {
+        if (filtered.length === 0 && favRecipes.length > 0) {
+            favGrid.innerHTML = `
+                <div class="empty-state">
+                    <h2>No favorites match your search</h2>
+                    <p>Try a different keyword or category.</p>
+                </div>`;
+        } else if (favRecipes.length === 0) {
             if (heroHeading) heroHeading.style.display = "none";
             favGrid.innerHTML = `
                 <div class="empty-state">
-                    <h2>No recipes match your search</h2>
-                    <p>Try changing your search or category filter.</p>
+                    <h2>Your cookbook is empty</h2>
+                    <p>Go to the Home page and tap ❤️ on recipes you love!</p>
+                    <a href="/index.html" class="view-more-bttn">Explore Recipes</a>
                 </div>`;
         } else {
             if (heroHeading) heroHeading.style.display = "block";
@@ -43,32 +58,20 @@ export function renderFavoritesPage() {
                 .map(recipe => createRecipeCard(recipe))
                 .join("");
 
-            // Bind favorite toggle listeners
+            // Re-bind favorite toggle listeners
             filtered.forEach(recipe => {
                 document
                     .getElementById(`fav-${recipe.id}`)
-                    ?.addEventListener("click", () =>
-                        toggleFavorite(recipe.id)
-                    );
+                    ?.addEventListener("click", () => toggleFavorite(recipe.id));
             });
 
-            // Re-init carousels
             initCardCarousels({ intervalTime: 5000 });
         }
     };
 
-    // Attach events
-    searchInput?.addEventListener("input", filterAndRenderFavorites);
-    categoryFilter?.addEventListener("change", filterAndRenderFavorites);
+    // Initial render call
+    window.filterAndRender();
 
-    // Initial render
-    filterAndRenderFavorites();
-
-    // Make global if needed
+    // Export specifically for the toggleFavorite function in utils.js
     window.renderFavoritesPage = renderFavoritesPage;
 }
-
-// Ensure carousels are ready on DOM load
-document.addEventListener("DOMContentLoaded", () => {
-    initCardCarousels({ intervalTime: 5000 });
-});

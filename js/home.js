@@ -4,42 +4,54 @@ import { initCardCarousels } from "./cardCarousel.js";
 
 export function initHomePage() {
     const recipeGrid = document.getElementById("recipeGrid");
-    const searchInput = document.getElementById("searchInput");
-    const categoryFilter = document.getElementById("categoryFilter");
+
+    // Get all possible inputs (Desktop and Mobile)
+    const dSearch = document.getElementById("searchInput");
+    const mSearch = document.getElementById("mobileSearchInput");
+    const dCat = document.getElementById("categoryFilter");
+    const mCat = document.getElementById("mobileCategoryFilter");
 
     if (!recipeGrid) return;
 
+    // 1. Populate both category filters
     const categories = ["All", ...new Set(recipes.map(r => r.category))];
-    categoryFilter.innerHTML = categories
+    const categoryHTML = categories
         .map(cat => `<option value="${cat}">${cat}</option>`)
         .join("");
 
+    if (dCat) dCat.innerHTML = categoryHTML;
+    if (mCat) mCat.innerHTML = categoryHTML;
+
+    // 2. Define the Global Filter Function
     window.filterAndRender = () => {
-        const term = searchInput.value.toLowerCase();
-        const cat = categoryFilter.value;
+        // Read from whichever input is currently available/synced
+        const term = (dSearch?.value || mSearch?.value || "").toLowerCase();
+        const cat = dCat?.value || mCat?.value || "All";
 
         const filtered = recipes.filter(r => {
-            const matchesSearch = r.name.toLowerCase().includes(term);
+            const matchesSearch = r.name.toLowerCase().includes(term) ||
+                r.description.toLowerCase().includes(term);
             const matchesCat = cat === "All" || r.category === cat;
             return matchesSearch && matchesCat;
         });
 
-        recipeGrid.innerHTML = filtered
-            .map(recipe => createRecipeCard(recipe))
-            .join("");
+        // 3. Render Results
+        recipeGrid.innerHTML = filtered.length > 0
+            ? filtered.map(recipe => createRecipeCard(recipe)).join("")
+            : `<p class="no-results">No recipes found matching "${term}"</p>`;
 
+        // 4. Attach Listeners to Fav buttons
         filtered.forEach(recipe => {
             document
                 .getElementById(`fav-${recipe.id}`)
                 ?.addEventListener("click", () => toggleFavorite(recipe.id));
         });
 
-        // 🔁 Reusable carousel
+        // 5. Reusable carousel
         initCardCarousels();
     };
 
-    searchInput.addEventListener("input", window.filterAndRender);
-    categoryFilter.addEventListener("change", window.filterAndRender);
-
+    // Note: Event listeners are already attached in utils.js (renderNavbar),
+    // but we call it once to initialize the grid.
     window.filterAndRender();
 }

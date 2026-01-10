@@ -1,21 +1,37 @@
 /* ==========================================================================
-   2. NAVIGATION BAR
+   1. NAVIGATION BAR
    ========================================================================== */
+
+/* --- Desktop Layout --- */
 .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1.5rem 5%;
     background: var(--card-bg);
     border-bottom: 1px solid var(--border);
     position: sticky;
     top: 0;
-    z-index: 100;
+    z-index: 1000;
 }
 
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 5%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.nav-menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex: 1;
+}
+
+/* --- Brand & Links --- */
 .logo {
     font-size: 1.5rem;
     font-weight: 800;
+    white-space: nowrap;
 }
 
 .logo span {
@@ -25,18 +41,18 @@
 .navbar-left {
     display: flex;
     gap: 2rem;
-    align-items: center;
+    margin-left: 3rem;
 }
 
-.navbar-left a {
+.nav-link {
     text-decoration: none;
     color: var(--text-main);
     font-weight: 600;
     font-size: 0.9rem;
-    transition: var(--transition);
+    transition: 0.3s;
 }
 
-.navbar-left a.active {
+.nav-link.active {
     color: var(--primary);
     border-bottom: 2px solid var(--primary);
 }
@@ -47,61 +63,205 @@
     gap: 15px;
 }
 
+/* --- Interactive Elements --- */
+.icon-btn {
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 6px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.hamburger span {
+    width: 25px;
+    height: 3px;
+    background: var(--text-main);
+    transition: 0.3s;
+}
+
 /* ==========================================================================
-   5. FOOTER SECTION
+   2. MOBILE-SPECIFIC UI COMPONENTS
    ========================================================================== */
+
+.nav-mobile-controls {
+    display: none;
+    align-items: center;
+    gap: 15px;
+}
+
+/* Hide the mobile profile link on desktop */
+.mobile-profile-link {
+    display: none;
+}
+
+.mobile-search-tray {
+    display: none;
+    padding: 12px 5%;
+    background: var(--card-bg);
+    border-top: 1px solid var(--border);
+    gap: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.mobile-search-tray.show {
+    display: flex;
+    flex-direction: column;
+}
+
+/* ==========================================================================
+   4. PREMIUM FOOTER SECTION
+   ========================================================================== */
+
 .main-footer {
     background: var(--card-bg);
     border-top: 1px solid var(--border);
-    padding: 60px 5% 20px;
-    margin-top: 80px;
+    padding: 80px 5% 40px;
+    margin-top: 100px;
+    font-family: 'Inter', sans-serif;
+    /* Assumes a clean sans-serif */
 }
 
 .footer-container {
     display: grid;
     grid-template-columns: 1.5fr 1fr 1.5fr;
-    gap: 40px;
+    gap: 60px;
     max-width: 1200px;
     margin: 0 auto;
 }
 
-.footer-section h4 {
-    font-size: 1.1rem;
+/* --- Branding --- */
+.logo {
+    font-size: 1.4rem;
+    letter-spacing: 3px;
+    font-weight: 700;
     margin-bottom: 20px;
 }
 
-.footer-about {
+.footer-tagline {
     color: var(--text-muted);
-    font-size: 0.95rem;
-    max-width: 300px;
-    margin-top: 15px;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    max-width: 280px;
+    margin-bottom: 25px;
 }
 
-.footer-section ul {
+.social-links {
+    display: flex;
+    gap: 20px;
+}
+
+.social-links a {
+    text-decoration: none;
+    color: var(--text-main);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    transition: opacity 0.3s ease;
+}
+
+.social-links a:hover {
+    opacity: 0.6;
+}
+
+/* --- Typography & Nav --- */
+.footer-container h4 {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 25px;
+    color: var(--text-main);
+}
+
+.footer-nav ul {
     list-style: none;
+    padding: 0;
 }
 
-.footer-section ul li {
+.footer-nav ul li {
     margin-bottom: 12px;
 }
 
-.footer-section ul li a {
+.footer-nav ul li a {
     text-decoration: none;
     color: var(--text-muted);
     font-size: 0.9rem;
-    transition: var(--transition);
+    transition: color 0.3s ease;
 }
 
-.footer-section ul li a:hover {
+.footer-nav ul li a:hover {
     color: var(--primary);
-    padding-left: 5px;
 }
 
-.footer-bottom {
-    text-align: center;
-    margin-top: 60px;
-    padding-top: 20px;
-    border-top: 1px solid var(--border);
+/* --- Newsletter (The Professional Look) --- */
+.footer-newsletter p {
+    font-size: 0.9rem;
     color: var(--text-muted);
-    font-size: 0.85rem;
+    margin-bottom: 20px;
+}
+
+.newsletter-form {
+    display: flex;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 5px;
+}
+
+.newsletter-form input {
+    background: transparent;
+    border: none;
+    padding: 10px 0;
+    width: 100%;
+    color: var(--text-main);
+    outline: none;
+}
+
+.newsletter-form button {
+    background: transparent;
+    border: none;
+    text-transform: uppercase;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    cursor: pointer;
+    color: var(--primary);
+    transition: transform 0.3s ease;
+}
+
+.newsletter-form button:hover {
+    transform: translateX(5px);
+}
+
+/* --- Footer Bottom --- */
+.footer-bottom {
+    margin-top: 80px;
+    padding-top: 30px;
+    border-top: 1px solid var(--border-light);
+}
+
+.footer-bottom-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--text-muted);
+    font-size: 0.75rem;
+    letter-spacing: 0.5px;
+}
+
+.legal-links {
+    display: flex;
+    gap: 20px;
+}
+
+.legal-links a {
+    color: var(--text-muted);
+    text-decoration: none;
 }
