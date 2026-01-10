@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Fridge | CookBook</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+    <nav id="main-navbar" class="navbar"></nav>
+
+    <header class="hero">
+        <div class="hero-content">
+            <span class="editorial-badge">Kitchen Assistant</span>
+            <h1>What's in my Fridge?</h1>
+            <p>Select ingredients you have to find matching recipes.</p>
+        </div>
+    </header>
+
+    <main class="fridge-wrapper">
+        <section class="pantry-section">
+            <div class="pantry-header">
+                <div class="header-text">
+                    <h2>Stock Your Fridge</h2>
+                    <p>Tap ingredients to add them to your virtual pantry.</p>
+                </div>
+                <button id="clear-pantry" class="btn-clear">Clear All</button>
+            </div>
+
+            <div id="pantry-tray" class="pantry-tray">
+            </div>
+
+            <div class="active-inventory">
+                <div class="status-indicator">
+                    <span class="dot"></span>
+                    <span id="match-count">0 ingredients selected</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="results-section" style="display: none;">
+            <div class="results-header">
+                <h3>Recommended for You</h3>
+                <div id="results-meta" class="results-meta"></div>
+            </div>
+
+            <div id="fridge-results" class="recipe-grid">
+            </div>
+        </section>
+    </main>
+
+    <footer id="main-footer" class="main-footer"></footer>
+    <script type="module" src="/script.js"></script>
+</body>
+
+</html>

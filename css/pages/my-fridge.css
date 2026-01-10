@@ -1,0 +1,195 @@
+/* ==========================================================================
+   2. HIGH-END FRIDGE LAYOUT
+   ========================================================================== */
+.hero-content h1 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    letter-spacing: -1px;
+    margin: 12px 0;
+}
+
+.editorial-badge {
+    background: var(--primary);
+    color: white;
+    padding: 5px 14px;
+    border-radius: 30px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+}
+
+.fridge-wrapper {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px 80px;
+}
+
+/* Pantry Section */
+.pantry-section {
+    background: var(--card-bg);
+    padding: 32px;
+    border-radius: 24px;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow);
+    margin-bottom: 40px;
+}
+
+.pantry-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 24px;
+}
+
+.pantry-header h2 {
+    font-size: 1.4rem;
+    font-weight: 700;
+}
+
+.pantry-header p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    margin-top: 1rem;
+}
+
+.pantry-tray {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 24px;
+}
+
+/* Refined Ingredient Chips */
+.ing-chip {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 20px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    background: var(--bg);
+    color: var(--text-main);
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all var(--transition);
+}
+
+.ing-chip:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 107, 107, 0.1);
+}
+
+.ing-chip.active {
+    background: var(--text-main);
+    color: var(--bg);
+    border-color: var(--text-main);
+}
+
+.ing-chip .plus-icon {
+    font-size: 1.1rem;
+    transition: transform 0.2s;
+}
+
+.ing-chip.active .plus-icon {
+    transform: rotate(45deg);
+    color: var(--primary);
+}
+
+/* Results Section */
+.results-header {
+    margin-bottom: 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.results-header h3 {
+    font-size: 1.5rem;
+    font-weight: 800;
+}
+
+/* Recipe Grid (Assumed same as your base CSS) */
+.recipe-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 25px;
+}
+
+.fridge-card-wrapper {
+    position: relative;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Elevated Match Badge */
+.match-badge {
+    position: absolute;
+    top: -8px;
+    right: 15px;
+    z-index: 30;
+    padding: 6px 14px;
+    border-radius: 8px;
+    font-size: 0.75rem;
+    font-weight: 800;
+    color: #fff;
+    background: #95a5a6;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.match-badge.high-match {
+    background: #f39c12;
+}
+
+.match-badge.perfect-match {
+    background: #27ae60;
+}
+
+.fridge-footer {
+    padding: 18px;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-top: none;
+    border-radius: 0 0 var(--radius) var(--radius);
+    margin-top: -10px;
+    /* Blend with card */
+}
+
+.ready-txt {
+    color: #27ae60;
+    font-weight: 700;
+    font-size: 0.85rem;
+}
+
+.missing-txt {
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.active-inventory {
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+}
+
+.dot {
+    height: 8px;
+    width: 8px;
+    background-color: #27ae60;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.btn-clear {
+    background: none;
+    border: none;
+    color: var(--primary);
+    cursor: pointer;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+}

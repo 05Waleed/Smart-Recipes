@@ -55,6 +55,7 @@ export function renderNavbar() {
                     <a href="/pages/favorites.html" class="nav-link ${currentPage.includes('favorites') ? 'active' : ''}">Favorites</a>
                     <a href="/pages/top-chefs.html" class="nav-link ${currentPage.includes('top-chefs') ? 'active' : ''}">Top Chefs</a>
                     <a href="/pages/community.html" class="nav-link ${currentPage.includes('community') ? 'active' : ''}">Community</a>
+                    <a href="/pages/my-fridge.html" class="nav-link ${currentPage.includes('my-fridge') ? 'active' : ''}">My Fridge</a>
                     <a href="/pages/profile.html" class="nav-link mobile-profile-link ${currentPage.includes('profile') ? 'active' : ''}">
                         Profile
                     </a>
