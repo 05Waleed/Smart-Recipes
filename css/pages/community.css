@@ -1,0 +1,301 @@
+/* ==========================================================================
+   1. DESIGN TOKENS & RESET (BASE KEPT EXACTLY THE SAME)
+   ========================================================================== */
+:root {
+    --primary: #ff6b6b;
+    --primary-dark: #ee5253;
+    --bg: #f6f6f6;
+    --card-bg: #ffffff;
+    --text-main: #2d3436;
+    --text-muted: #636e72;
+    --border: #edf2f7;
+    --shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+    --radius: 16px;
+    --transition: 0.3s ease;
+}
+
+.dark-mode {
+    --bg: #1a1a1a;
+    --card-bg: #2d2d2d;
+    --text-main: #f5f6fa;
+    --text-muted: #a2a2a2;
+    --border: #3d3d3d;
+    --shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: var(--bg);
+    color: var(--text-main);
+    font-family: 'Segoe UI', Roboto, sans-serif;
+    transition: var(--transition);
+    line-height: 1.6;
+}
+
+/* ==========================================================================
+   2. HIGH-END EDITORIAL LAYOUT
+   ========================================================================== */
+.community-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 20px;
+}
+
+.editorial-header {
+    text-align: left;
+    margin-bottom: 60px;
+    border-bottom: 2px solid var(--text-main);
+    padding-bottom: 40px;
+}
+
+.editorial-badge {
+    color: var(--primary);
+    text-transform: uppercase;
+    font-weight: 800;
+    letter-spacing: 3px;
+    font-size: 0.75rem;
+}
+
+.editorial-header h1 {
+    font-size: 4rem;
+    font-weight: 900;
+    letter-spacing: -3px;
+    margin: 10px 0;
+    line-height: 1;
+}
+
+.editorial-grid {
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: 60px;
+}
+
+/* Post Cards & Detail Enhancements */
+.feed-post {
+    background: var(--card-bg);
+    border-radius: 24px;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border);
+    margin-bottom: 60px;
+    overflow: hidden;
+    /* Animation Initial State */
+    opacity: 0;
+    transform: translateY(30px);
+    transition: transform 0.8s cubic-bezier(0.2, 1, 0.3, 1), opacity 0.8s ease;
+}
+
+.feed-post.reveal {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.post-image-wrapper {
+    height: 550px;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.post-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 1.2s cubic-bezier(0.2, 1, 0.3, 1);
+}
+
+.feed-post:hover .post-image {
+    transform: scale(1.08);
+}
+
+.post-body {
+    padding: 40px;
+}
+
+.post-title {
+    font-size: 2.8rem;
+    font-weight: 800;
+    letter-spacing: -1.5px;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    transition: color 0.3s ease;
+}
+
+.feed-post:hover .post-title {
+    color: var(--primary);
+}
+
+/* Recipe Metadata Bar */
+.recipe-meta-bar {
+    display: flex;
+    gap: 40px;
+    padding: 20px 0;
+    margin-bottom: 30px;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+}
+
+.meta-item span {
+    display: block;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    font-weight: 700;
+}
+
+.meta-item strong {
+    font-size: 1rem;
+    color: var(--text-main);
+}
+
+.recipe-info-grid {
+    background-color: var(--bg);
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 40px;
+    padding: 1.5rem;
+    border-radius: var(--radius);
+}
+
+.post-section h4 {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--primary);
+    margin-bottom: 15px;
+}
+
+.post-section li {
+    margin-bottom: 10px;
+    color: var(--text-muted);
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.post-section li:hover {
+    color: var(--text-main);
+    transform: translateX(5px);
+}
+
+/* Sidebar Widgets */
+.sidebar-card {
+    background: var(--card-bg);
+    padding: 30px;
+    border-radius: 24px;
+    border: 1px solid var(--border);
+    margin-bottom: 30px;
+    transition: var(--transition);
+}
+
+.sidebar-card:hover {
+    box-shadow: var(--shadow);
+    border-color: var(--primary);
+}
+
+.sidebar-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+}
+
+.chef-row {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+    transition: transform 0.2s ease;
+    cursor: pointer;
+}
+
+.chef-row:hover {
+    transform: translateX(8px);
+}
+
+.chef-row img {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.challenge-box {
+    background: var(--bg);
+    padding: 20px;
+    border-radius: 16px;
+    position: relative;
+    overflow: hidden;
+}
+
+.challenge-tag {
+    background: var(--primary);
+    color: white;
+    font-size: 0.6rem;
+    font-weight: 900;
+    padding: 2px 8px;
+    border-radius: 4px;
+    display: inline-block;
+    margin-bottom: 10px;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.7;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.btn-sidebar {
+    width: 100%;
+    padding: 12px;
+    background: var(--text-main);
+    color: var(--bg);
+    border: none;
+    border-radius: 12px;
+    font-weight: 700;
+    margin-top: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-sidebar:hover {
+    background: var(--primary);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 107, 107, 0.3);
+}
+
+.sticky {
+    position: sticky;
+    top: 30px;
+}
+
+.like-button {
+    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.like-button:active {
+    transform: scale(0.9);
+}
+
+@media (max-width: 1000px) {
+    .editorial-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .feed-sidebar {
+        display: none;
+    }
+
+    .editorial-header h1 {
+        font-size: 2.5rem;
+    }
+}

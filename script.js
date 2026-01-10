@@ -5,6 +5,8 @@ import { renderFavoritesPage } from "./js/favorites.js";
 import { renderProfile } from "./js/profile.js";
 import { renderTopChefs } from "./js/topChefs.js";
 import { chefProfile } from "./js/chefProfile.js";
+import { renderCommunity } from "./js/community.js";
+
 
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -31,8 +33,11 @@ document.addEventListener("DOMContentLoaded", () => {
         case path.endsWith("/pages/top-chefs.html"):
             renderTopChefs();
             break;
-        case path.endsWith("/pages/chef-profile.html"): // New Case
+        case path.endsWith("/pages/chef-profile.html"):
             chefProfile();
+            break;
+        case path.endsWith("/pages/community.html"): 
+            renderCommunity();
             break;
         default:
             console.warn("No page-specific scripts to run for this path:", path);
