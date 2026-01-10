@@ -211,6 +211,7 @@ export function renderFooter() {
                         <li><a href="/pages/favorites.html">My Cookbook</a></li>
                         <li><a href="/pages/top-chefs.html">Top Chefs</a></li>
                         <li><a href="/pages/profile.html">Profile</a></li>
+                        <li><a href="/pages/my-fridge.html">My Fridge</a></li>
                     </ul>
                 </div>
             </div>
