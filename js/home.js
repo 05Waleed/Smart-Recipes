@@ -1,5 +1,6 @@
 import { recipes } from "../data/recipesData.js";
 import { createRecipeCard, toggleFavorite } from "./utils.js";
+import { initCardCarousels } from "./cardCarousel.js";
 
 export function initHomePage() {
     const recipeGrid = document.getElementById("recipeGrid");
@@ -9,7 +10,9 @@ export function initHomePage() {
     if (!recipeGrid) return;
 
     const categories = ["All", ...new Set(recipes.map(r => r.category))];
-    categoryFilter.innerHTML = categories.map(cat => `<option value="${cat}">${cat}</option>`).join('');
+    categoryFilter.innerHTML = categories
+        .map(cat => `<option value="${cat}">${cat}</option>`)
+        .join("");
 
     window.filterAndRender = () => {
         const term = searchInput.value.toLowerCase();
@@ -21,15 +24,22 @@ export function initHomePage() {
             return matchesSearch && matchesCat;
         });
 
-        recipeGrid.innerHTML = filtered.map(recipe => createRecipeCard(recipe)).join('');
+        recipeGrid.innerHTML = filtered
+            .map(recipe => createRecipeCard(recipe))
+            .join("");
 
-        // Add event listeners to newly created buttons
         filtered.forEach(recipe => {
-            document.getElementById(`fav-${recipe.id}`).addEventListener("click", () => toggleFavorite(recipe.id));
+            document
+                .getElementById(`fav-${recipe.id}`)
+                ?.addEventListener("click", () => toggleFavorite(recipe.id));
         });
+
+        // 🔁 Reusable carousel
+        initCardCarousels();
     };
 
     searchInput.addEventListener("input", window.filterAndRender);
     categoryFilter.addEventListener("change", window.filterAndRender);
+
     window.filterAndRender();
 }

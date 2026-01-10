@@ -40,8 +40,9 @@ export function renderNavbar() {
     nav.innerHTML = `
         <div class="navbar-left">
             <div class="logo">COOK<span>BOOK</span></div>
-            <a href="index.html" class="${currentPage === 'index.html' ? 'active' : ''}">Home</a>
-            <a href="favorites.html" class="${currentPage === 'favorites.html' ? 'active' : ''}">Favorites</a>
+            <a href="/index.html" class="${currentPage === '/index.html' ? 'active' : ''}">Home</a>
+            <a href="/pages/favorites.html" class="${currentPage === '/pages/favorites.html' ? 'active' : ''}">Favorites</a>
+            <a href="/pages/topChefs.html" class="${currentPage === '/pages/topChefs.html' ? 'active' : ''}">Top Chefs</a>
         </div>
         <div class="navbar-right">
             ${currentPage === 'index.html' ? `
@@ -51,23 +52,51 @@ export function renderNavbar() {
                 <input type="text" id="searchInput" placeholder="Search delicious recipes...">
             ` : ''}
             <button id="themeToggle">🌙</button>
-            <button id="themeToggle"><a href="profile.html">👤</a></button>
+            <button id="themeToggle"><a href="pages/profile.html">👤</a></button>
         </div>
     `;
 }
 
 export function createRecipeCard(recipe) {
     const isFav = favorites.includes(recipe.id);
+
     return `
         <div class="recipe-card">
-            <img src="${recipe.images[0]}" alt="${recipe.name}">
+            <div class="card-carousel" data-id="${recipe.id}">
+                ${recipe.images
+                    .map(
+                        (img, index) => `
+                        <img 
+                            src="${img}" 
+                            alt="${recipe.name}" 
+                            class="carousel-image ${index === 0 ? "active" : ""}"
+                        />
+                    `
+                    )
+                    .join("")}
+
+                <div class="carousel-dots">
+                    ${recipe.images
+                        .map(
+                            (_, index) =>
+                                `<span class="dot ${index === 0 ? "active" : ""}" data-index="${index}"></span>`
+                        )
+                        .join("")}
+                </div>
+            </div>
+
             <div class="recipe-card-content">
                 <h3>${recipe.name}</h3>
                 <p>${recipe.description}</p>
+
                 <div class="recipe-card-buttons">
-                    <button class="view-more-bttn" onclick="location.href='detailRecipe.html?id=${recipe.id}'">View More</button>
+                    <button class="view-more-bttn"
+                        onclick="location.href='/pages/detailRecipe.html?id=${recipe.id}'">
+                        View More
+                    </button>
+
                     <button class="fav-btn" id="fav-${recipe.id}">
-                        ${isFav ? '❤️' : '🤍'}
+                        ${isFav ? "❤️" : "🤍"}
                     </button>
                 </div>
             </div>

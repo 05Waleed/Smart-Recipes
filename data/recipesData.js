@@ -4,7 +4,7 @@ export const recipes = [
         name: "Creamy Pasta",
         category: "Dinner",
         prepTime: "15min",
-        difficulty: "Intermediate", 
+        difficulty: "Intermediate",
         description: "Rich and creamy pasta with herbs.",
         images: [
             "https://dishingouthealth.com/wp-content/uploads/2022/09/CreamyTomatoPasta_Square.jpg",
@@ -258,7 +258,7 @@ export const recipes = [
             "https://www.delmonte.com/sites/default/files/VibrantFruitSmoothies.jpg",
             "https://www.blessthismessplease.com/wp-content/uploads/2022/06/tropical-smoothie-recipe-5.jpg",
             "https://assets.sainsburys-groceries.co.uk/gol/tropical-fruit-smoothie/original.jpg",
-            "https://www.thedailyymeal.com/img/gallery/layered-tropical-fruit-smoothie/shutterstock_370678421.jpg"
+            "https://joyfullymad.com/wp-content/uploads/2023/02/strawberry-banana-smoothie-16.jpg"
         ],
         ingredients: [
             { name: "Frozen Fruit (g)", base: 150 },
@@ -272,5 +272,5 @@ export const recipes = [
             "Pour into glass and serve chilled."
         ],
         tips: "Frozen fruit makes the smoothie thicker."
-    }
+    },
 ];

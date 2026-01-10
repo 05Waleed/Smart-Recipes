@@ -1,5 +1,6 @@
 import { recipes } from "../data/recipesData.js";
 import { favorites, createRecipeCard, toggleFavorite } from "./utils.js";
+import { initCardCarousels } from "./cardCarousel.js";
 
 export function renderFavoritesPage() {
     const favGrid = document.getElementById("favoritesGrid");
@@ -15,16 +16,32 @@ export function renderFavoritesPage() {
             <div class="empty-state">
                 <h2>Your cookbook is empty</h2>
                 <p>Start hearting recipes to see them here!</p>
-                <a href="index.html" class="browse-btn">Browse Recipes</a>
+                <a href="/index.html" class="browse-btn">Browse Recipes</a>
             </div>`;
     } else {
         if (heroHeading) heroHeading.style.display = "block";
-        favGrid.innerHTML = favRecipes.map(recipe => createRecipeCard(recipe)).join('');
+        favGrid.innerHTML = favRecipes
+            .map(recipe => createRecipeCard(recipe))
+            console.log(recipe)
+            .join("");
 
         // Bind listeners
         favRecipes.forEach(recipe => {
-            document.getElementById(`fav-${recipe.id}`).addEventListener("click", () => toggleFavorite(recipe.id));
+            document
+                .getElementById(`fav-${recipe.id}`)
+                ?.addEventListener("click", () =>
+                    toggleFavorite(recipe.id)
+                );
         });
+
+        // Re-init carousels AFTER rendering cards
+        initCardCarousels({ intervalTime: 5000 });
     }
 }
-window.renderFavoritesPage = renderFavoritesPage; // Make global for utils.js
+
+// Make global for utils.js (if you really need this)
+window.renderFavoritesPage = renderFavoritesPage;
+
+document.addEventListener("DOMContentLoaded", () => {
+    initCardCarousels({ intervalTime: 5000 });
+});
