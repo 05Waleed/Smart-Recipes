@@ -37,7 +37,7 @@ export function renderProfile() {
     recentContainer.querySelectorAll('img').forEach(img => {
         img.addEventListener('click', () => {
             const recipeId = img.getAttribute('data-id');
-            window.location.href = `detailRecipe.html?id=${recipeId}`;
+            window.location.href = `detail-recipe.html?id=${recipeId}`;
         });
     });
 

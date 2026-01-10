@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
         case path.endsWith("index.html") || path === "/":
             initHomePage();
             break;
-        case path.endsWith("/pages/detailRecipe.html"):
+        case path.endsWith("/pages/detail-recipe.html"):
             initDetailPage();
             break;
         case path.endsWith("/pages/favorites.html"):

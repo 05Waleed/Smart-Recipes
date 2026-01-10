@@ -171,7 +171,7 @@ export function createRecipeCard(recipe) {
 
                 <div class="recipe-card-buttons">
                     <button class="view-more-bttn"
-                        onclick="location.href='/pages/detailRecipe.html?id=${recipe.id}'">
+                        onclick="location.href='/pages/detail-recipe.html?id=${recipe.id}'">
                         View More
                     </button>
 
